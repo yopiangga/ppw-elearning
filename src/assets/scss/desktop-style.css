@@ -412,6 +412,199 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
+  .login-page {
+    font-family: "Poppins";
+  }
+  .login-page .login {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .login-page .login .login-left {
+    width: 50%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .login-page .login .login-left .content {
+    width: 75%;
+  }
+  .login-page .login .login-left .content h3 {
+    margin-top: 40px;
+    color: #ff7a57;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    margin-bottom: 50px;
+  }
+  .login-page .login .login-left .content h1 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 5px;
+  }
+  .login-page .login .login-left .content p {
+    line-height: 24px;
+    font-size: 14px;
+    color: #C4C4C4;
+    margin-bottom: 30px;
+  }
+  .login-page .login .login-left .content .btn-google {
+    width: 100%;
+    height: 50px;
+    color: #393939;
+    background-color: white;
+    border: 1px solid #ECF0F3;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    cursor: pointer;
+  }
+  .login-page .login .login-left .content .btn-google img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  .login-page .login .login-left .content .btn-google:hover {
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    border: 1px solid #ff7a57;
+  }
+  .login-page .login .login-left .content .choice-login {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .login-page .login .login-left .content .choice-login hr {
+    width: 30%;
+    height: 1px;
+    background-color: #ECF0F3;
+    border: none;
+  }
+  .login-page .login .login-left .content .choice-login h6 {
+    font-size: 14px;
+    color: #C4C4C4;
+    font-weight: 400;
+  }
+  .login-page .login .login-left .content form .form-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .login-page .login .login-left .content form .form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #393939;
+    margin-bottom: 15px;
+  }
+  .login-page .login .login-left .content form .form-group i {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    color: rgba(196, 196, 196, 0.5);
+  }
+  .login-page .login .login-left .content form .form-group input {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #ECF0F3;
+    padding-left: 50px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    color: #393939;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .login-page .login .login-left .content form .form-group input:focus {
+    border: 1px solid #ff7a57;
+  }
+  .login-page .login .login-left .content form .btn-login {
+    width: 100%;
+    height: 50px;
+    color: white;
+    background-color: #ff7a57;
+    border: 1px solid #ff7a57;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .login-page .login .login-left .content form .btn-login:hover {
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    -webkit-box-shadow: 0px 15px 45px rgba(255, 122, 87, 0.32);
+            box-shadow: 0px 15px 45px rgba(255, 122, 87, 0.32);
+  }
+  .login-page .login .login-left .content form h6 {
+    font-size: 14px;
+    color: #C4C4C4;
+    line-height: 24px;
+    margin-bottom: 50px;
+  }
+  .login-page .login .login-left .content form h6 a {
+    color: #ff7a57;
+  }
+  .login-page .login .login-right {
+    right: 0;
+    width: 50%;
+    min-height: 100vh;
+    background-color: #ff7a57;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .login-page .login .login-right img {
+    width: 75%;
+  }
+  .login-page .login .login-right h2 {
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .login-page .login .login-right p {
+    font-size: 14px;
+    width: 80%;
+    text-align: center;
+    line-height: 24px;
+    color: white;
+  }
   .dashboard {
     width: 95%;
     height: 100%;
@@ -685,6 +878,154 @@
     border: 2px solid #ff7a57;
     background-color: #ff7a57;
     color: white;
+  }
+  .dashboard .card-assignment-detail .table-section {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-bottom: 80px;
+  }
+  .dashboard .card-assignment-detail .table-section .content {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table {
+    width: 100%;
+    min-height: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: white;
+    -webkit-box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+            box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+    border-radius: 20px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table {
+    width: 90%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table thead {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table thead tr {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table thead tr .rank {
+    width: 3%;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table thead tr th {
+    width: 24%;
+    text-align: left;
+    font-weight: 500;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table thead tr .skor {
+    width: 20%;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(57, 57, 57, 0.1);
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr th {
+    width: 4%;
+    text-align: left;
+    font-weight: 500;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr td {
+    width: 24%;
+    text-align: left;
+    font-weight: 400;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr td img {
+    width: 80px;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor {
+    width: 23%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge {
+    padding: 0px 10px 0px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 2px;
+    margin-right: 2px;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-danger {
+    background-color: salmon;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-warning {
+    background-color: orange;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-primary {
+    background-color: #ff7a57;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table table tbody hr {
+    height: 1px;
   }
   .dashboard .card-assignment-detail.active {
     width: 70%;

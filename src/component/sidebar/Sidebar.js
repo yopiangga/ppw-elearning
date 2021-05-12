@@ -50,6 +50,12 @@ export function Sidebar() {
                             <h4>My Assignment</h4>
                         </Link>
                     </li>
+                    <li onClick={handleSidebar} className={menuActive == "assignment" ? "active" : ""}>
+                        <Link to="/assignment" >
+                            <div className="icon"><FaBookmark /> </div>
+                            <h4>Assignment</h4>
+                        </Link>
+                    </li>
                     <li onClick={handleSidebar} className={menuActive == "myProfile" ? "active" : ""}>
                         <Link to="/my-profile" >
                             <div className="icon"><FaUserCog /> </div>

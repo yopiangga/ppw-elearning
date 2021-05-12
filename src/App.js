@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import {
   HashRouter,
   BrowserRouter,
@@ -14,6 +14,7 @@ import './assets/scss/tablet-style.css';
 import './assets/scss/mobileLandscape-style.css';
 import './assets/scss/mobile-style.css';
 
+import { Login } from './component/auth/Login';
 import { Sidebar } from './component/sidebar/Sidebar';
 import Navbar from './component/navbar/Navbar';
 import { UserProvider } from "./pages/userContext";
@@ -21,18 +22,34 @@ import { Dashboard } from "./component/dashboard/Dashboard";
 import { MyClass } from "./component/myClass/MyClass";
 import { MyAssignment } from "./component/myAssignment/MyAssignment";
 import { Profile } from "./component/profile/Profile";
+import { Assignment } from "./component/assignment/Assignment";
+import { Register } from "./component/auth/Register";
 
 function App() {
+  const [status, setStatus] = useState(0);
 
   const handleSidebar = () => {
-      $('.sidebar').removeClass('active');
-      $('.notifikasi').removeClass('active');
+    $('.sidebar').removeClass('active');
+    $('.notifikasi').removeClass('active');
   }
 
   return (
     <UserProvider>
       <HashRouter>
-        <div className="App">
+        {
+          (status != 1) ?
+          <div className="login-page">
+            <Route path="/login" exact>
+              <Login />
+            </Route>
+            <Route path="/register" exact>
+              <Register />
+            </Route>
+          </div>
+
+          : 
+
+          <div className="App">
           <Sidebar />
           <div className="body">
             <Navbar />
@@ -47,6 +64,9 @@ function App() {
                 <Route path="/my-assignment" exact>
                   <MyAssignment />
                 </Route>
+                <Route path="/assignment" exact>
+                  <Assignment />
+                </Route>
                 <Route path="/my-profile" exact>
                   <Profile />
                 </Route>
@@ -54,6 +74,9 @@ function App() {
             </div>
           </div>
         </div>
+        }
+        
+        
       </HashRouter>
     </UserProvider>
   );

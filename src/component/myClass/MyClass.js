@@ -17,14 +17,13 @@ export function MyClass() {
 
     return (
         <div className="dashboard">
-                <h2>Join Class</h2>
+            <h2>Join Class</h2>
             <div className="action">
                 <form action="">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                {/* <label for="">Code Class</label> */}
-                                <input type="text" value="" name="codeClass" id="codeClass" placeholder="Code Class"/>
+                                <input type="text" value="" name="codeClass" id="codeClass" placeholder="Code Class" />
                             </div>
                         </div>
                     </div>
