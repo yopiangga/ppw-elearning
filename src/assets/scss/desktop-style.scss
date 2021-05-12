@@ -1,0 +1,925 @@
+@media only screen and (min-width: 1024px) {
+
+
+    @font-face {
+        font-family: "Poppins";
+        src: url('../fonts/poppins/Poppins-Regular.ttf');
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: "Poppins";
+        src: url('../fonts/poppins/Poppins-Medium.ttf');
+        font-weight: 500;
+    }
+
+    @font-face {
+        font-family: "Poppins";
+        src: url('../fonts/poppins/Poppins-SemiBold.ttf');
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: "Poppins";
+        src: url('../fonts/poppins/Poppins-Bold.ttf');
+        font-weight: 700;
+    }
+
+    @font-face {
+        font-family: "Poppins";
+        src: url('../fonts/poppins/Poppins-Italic.ttf');
+        font-style: italic;
+    }
+
+    $fontPrimary : "Poppins";
+
+    $colorYellow : #FDBF1F;
+    $colorOrange : #ff7a57;
+    $colorBlueLight : #CDEEF6;
+    $colorPink : #F17EAB;
+    $colorRed : #F02424;
+    $colorGray : #C4C4C4;
+    $colorLight : #ECF0F3;
+    $colorDark : #393939;
+    $colorBlack : #000D1E;
+
+    input,
+    textarea,
+    select:focus {
+        outline: none;
+    }
+
+    .App {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        min-height: 100vh;
+        font-family: $fontPrimary;
+
+        .sidebar {
+            left: 0;
+            position: fixed;
+            width: 20%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 999;
+
+            .logo {
+                width: 100%;
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+                border-right: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+                z-index: 2;
+
+                img {
+                    height: 60px;
+                }
+            }
+
+            .menu {
+                width: 80%;
+
+                ul {
+                    width: 100%;
+
+                    li {
+                        transition: 300ms;
+                        height: 50px;
+                        width: 100%;
+                        border-radius: 10px;
+                        margin-bottom: 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: white;
+
+                        A {
+                            width: 100%;
+                            height: 100%;
+                            font-family: $fontPrimary;
+                            color: $colorBlack;
+                            text-decoration: none;
+                            display: flex;
+                            align-items: center;
+
+                            .icon {
+                                width: 25%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: $colorOrange;
+                                font-size: 20px;
+                            }
+
+                        }
+                    }
+
+                    li:hover {
+                        transition: 300ms;
+                        background-color: $colorOrange;
+
+                        A {
+                            color: white;
+
+                            .icon {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    li.active {
+                        background-color: $colorOrange;
+
+                        A {
+                            color: white;
+
+                            .icon {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .menuHidden {
+                height: 100px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                .circle {
+                    width: 60px;
+                    height: 60px;
+                    background-color: $colorLight;
+                    color: $colorDark;
+                    font-size: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 100%;
+                }
+            }
+        }
+
+        .body {
+            width: 80%;
+            background-color: white;
+
+            .navbar {
+                height: 80px;
+                width: 100%;
+                background-color: white;
+                display: flex;
+                top: 0;
+                // left: 0;
+                right: 0;
+                align-items: center;
+                justify-content: space-between;
+                position: fixed;
+                z-index: 998;
+                box-shadow: 0px 12px 40px rgba($color: $colorDark, $alpha: 0.06);
+
+                .menu {
+                    color: transparent;
+                }
+
+                h1 {
+                    position: absolute;
+                    left: 320px;
+                    font-weight: 500;
+                    font-size: 24px;
+                    color: $colorBlack;
+
+                    span {
+                        color: $colorOrange;
+                    }
+                }
+
+                .icon {
+                    width: 100px;
+                    height: 100%;
+
+                    .icon-bell {
+                        width: 30px;
+                        height: 100%;
+                        font-size: 20px;
+                        color: $colorBlack;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        .circle {
+                            background-color: $colorOrange;
+                            height: 18px;
+                            width: 18px;
+                            border-radius: 15px;
+                            font-size: 12px;
+                            position: absolute;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: white;
+                            top: 20px;
+                            right: 0px;
+                        }
+                    }
+                }
+
+                .notifikasi {
+                    z-index: 998;
+                    transition: 300ms;
+                    width: 250px;
+                    height: 0px;
+                    overflow: hidden;
+                    position: absolute;
+                    top: 70px;
+                    right: 55px;
+
+                    .triangle {
+                        height: 20px;
+                        width: 100%;
+                        background-color: white;
+                        clip-path: polygon(220px 0, 235px 20px, 205px 20px);
+                    }
+
+                    .body-box {
+                        min-height: 180px;
+                        width: 250px;
+                        background-color: white;
+                        border-radius: 15px;
+
+                        .notifikasi-head {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            height: 60px;
+                            margin-bottom: 0px;
+
+                            h4 {
+                                font-weight: 500;
+                            }
+
+                            hr {
+                                width: 50px;
+                                height: 1px;
+                                border: none;
+                                background-color: $colorOrange;
+                            }
+                        }
+
+                        .notifikasi-body {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            position: relative;
+                            height: 100px;
+
+                            .item {
+                                width: 90%;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .item-left {
+                                    width: 20%;
+
+                                    .box {
+                                        width: 35px;
+                                        height: 35px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        border-radius: 10px;
+                                        background-color: $colorOrange;
+                                        color: white;
+                                    }
+                                }
+
+                                .item-right {
+                                    width: 80%;
+
+                                    h5 {
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    h4 {
+                                        font-weight: 500;
+                                        color: $colorOrange;
+                                    }
+                                }
+                            }
+
+                            .notifikasi-close {
+                                width: 100%;
+                                position: absolute;
+                                bottom: 0;
+                                display: flex;
+                                flex-direction: column;
+
+                                hr {
+                                    width: 90%;
+                                    height: 1px;
+                                    border: none;
+                                    background-color: $colorLight;
+                                }
+
+                                .text {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+
+                                    h4 {
+                                        font-size: 14px;
+                                        margin-left: 5px;
+                                    }
+
+                                    path {
+                                        color: $colorOrange;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .notifikasi.active {
+                    transition: 300ms;
+                    height: 200px;
+                }
+            }
+
+            .body-content {
+                margin-top: 80px;
+                background-color: $colorLight;
+                border-radius: 30px 0px 0px 0px;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    .dashboard {
+        width: 95%;
+        height: 100%;
+
+        h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        .filter {
+            margin-bottom: 30px;
+        }
+
+        .action {
+            width: 95%;
+            margin: 0px auto;
+
+            form {
+                display: flex;
+
+                .row {
+                    width: 300px;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+                    margin-right: 20px;
+
+                    .col-6 {
+                        width: 49%;
+                    }
+
+                    .col-12 {
+                        width: 100%;
+                    }
+
+                    .form-group {
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            margin-bottom: 10px;
+                            font-size: 14px;
+                        }
+
+                        input {
+                            height: 40px;
+                            border-radius: 20px;
+                            border: 1px solid $colorGray;
+                            padding-left: 20px;
+                            padding-right: 20px;
+                        }
+
+                        select {
+                            height: 44px;
+                            border: 1px solid $colorGray;
+                            border-radius: 20px;
+                            padding-left: 20px;
+                            padding-right: 20px;
+                        }
+
+                        textarea {
+                            border: 1px solid $colorGray;
+                            border-radius: 20px;
+                            padding: 10px 20px 10px 20px;
+                        }
+
+                        input:focus {
+                            border: 1px solid $colorOrange;
+                        }
+
+                        select:focus {
+                            border: 1px solid $colorOrange;
+                        }
+
+                        textarea:focus {
+                            border: 1px solid $colorOrange;
+                        }
+
+                    }
+                }
+
+                button {
+                    height: 45px;
+                    width: 120px;
+                    border-radius: 30px;
+                    border: 2px solid $colorOrange;
+                    background-color: $colorOrange;
+                    color: white;
+                }
+            }
+        }
+
+        .card-assignment {
+            display: flex;
+        }
+
+        .card-assignment-detail {
+            width: 0px;
+            overflow: hidden;
+            transition: 500ms;
+
+            .card {
+                width: 100%;
+                height: auto;
+                background-color: white;
+                border-radius: 20px;
+                padding: 15px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+
+                .card-head {
+                    display: flex;
+                    margin-bottom: 20px;
+
+                    .img {
+                        width: 10%;
+                        display: flex;
+
+                        .circle {
+                            width: 40px;
+                            height: 40px;
+                            overflow: hidden;
+                            border-radius: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            img {
+                                height: 40px;
+                            }
+                        }
+                    }
+
+                    .title {
+                        width: 80%;
+
+                        h2 {
+                            margin-top: 0;
+                            margin-bottom: 10px;
+                            line-height: 32px;
+                            font-size: 24px;
+                        }
+
+                        .information {
+                            display: flex;
+
+                            h5 {
+                                font-size: 14px;
+                                margin-right: 20px;
+                            }
+
+                            h6 {
+                                font-size: 12px;
+                                color: $colorDark;
+                                opacity: 0.9;
+                            }
+                        }
+                    }
+
+                    .skor {
+                        width: 10%;
+                    }
+                }
+
+                .card-body {
+                    margin-bottom: 30px;
+
+                    p {
+                        line-height: 28px;
+                        font-size: 16px;
+                    }
+                }
+
+                .card-action {
+
+                    form {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+
+                        .row {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 20px;
+
+                            .col-6 {
+                                width: 49%;
+                            }
+
+                            .col-12 {
+                                width: 100%;
+                            }
+
+                            .form-group {
+                                display: flex;
+                                flex-direction: column;
+
+                                .box-profile {
+
+                                    .imgProfile {
+                                        width: 0.1px;
+                                        height: 0.1px;
+                                        opacity: 0;
+                                        overflow: hidden;
+                                        position: absolute;
+                                        z-index: -1;
+                                    }
+
+                                    .lblImgProfile {
+                                        width: 100%;
+                                        height: 100px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        border: 1px solid $colorGray;
+                                        border-radius: 20px;
+                                        background-color: rgba($color: $colorDark, $alpha: 0.01);
+                                    }
+                                }
+
+                                label {
+                                    margin-bottom: 10px;
+                                    font-size: 14px;
+                                }
+
+                                input {
+                                    height: 40px;
+                                    border-radius: 20px;
+                                    border: 1px solid $colorGray;
+                                    padding-left: 20px;
+                                    padding-right: 20px;
+                                }
+
+                                select {
+                                    height: 44px;
+                                    border: 1px solid $colorGray;
+                                    border-radius: 20px;
+                                    padding-left: 20px;
+                                    padding-right: 20px;
+                                }
+
+                                textarea {
+                                    border: 1px solid $colorGray;
+                                    border-radius: 20px;
+                                    padding: 10px 20px 10px 20px;
+                                }
+
+                                input:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                                select:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                                textarea:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                            }
+                        }
+
+                        button {
+                            height: 45px;
+                            width: 200px;
+                            border-radius: 30px;
+                            border: 2px solid $colorOrange;
+                            background-color: $colorOrange;
+                            color: white;
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        .card-assignment-detail.active {
+            width: 70%;
+            transition: 500ms;
+        }
+
+        .card-group.nano {
+            width: 30%;
+            transition: 500ms;
+        }
+
+        .card-group {
+            transition: 500ms;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+
+            .shadow {
+                margin: 0px 30px 40px 30px;
+                box-shadow: 20px -20px 40px white;
+                width: 265px;
+                border-radius: 20px;
+                height: 125px;
+
+                .card {
+                    box-shadow: -20px 20px 40px rgba($color: $colorDark, $alpha: 0.12);
+                    background-color: $colorLight;
+                    width: 250px;
+                    height: 110px;
+                    border-radius: 20px;
+                    padding: 15px 15px 15px 15px;
+
+                    .card-head {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 30px;
+
+                        .circle {
+                            border-radius: 30px;
+                            height: 30px;
+                            width: 30px;
+                            background-color: rgba($color: $colorOrange, $alpha: 0.1);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: $colorOrange;
+                        }
+
+                        .icon {
+                            color: $colorOrange;
+                            font-size: 20px;
+                            width: 45px;
+                            height: 30px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            cursor: pointer;
+
+                            svg {
+                                position: absolute;
+                                left: 0;
+                                transition: 300ms;
+                                color: $colorOrange;
+                            }
+                        }
+                    }
+
+                    .card-body {
+                        display: flex;
+                        justify-content: space-between;
+
+                        h4 {
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                        }
+
+                        h5 {
+                            color: $colorDark;
+                            font-size: 14px;
+                            line-height: 24px;
+                        }
+
+                        .right {
+                            h4 {
+                                font-size: 24px;
+                                color: $colorDark;
+                            }
+                        }
+                    }
+                }
+
+                .card:hover {
+                    .card-head {
+
+                        .icon {
+
+                            svg {
+                                left: 15px;
+                                transition: 300ms;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .profile {
+        width: 95%;
+        height: 100%;
+        width: 100%;
+
+        .form-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 80px;
+
+            .content {
+                width: 90%;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                min-height: 500px;
+
+                .form-box {
+                    position: relative;
+                    z-index: 1;
+                    top: 80px;
+                    width: 90%;
+                    min-height: 500px;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: white;
+                    // box-shadow: 0px 30px 60px rgba($color: $colorDark, $alpha: 0.1);
+                    border-radius: 20px;
+                    align-items: center;
+                    padding-top: 40px;
+                    padding-bottom: 40px;
+
+                    h2 {
+                        font-size: 28px;
+                        font-weight: 500;
+                        margin-top: 0px;
+                        text-align: center;
+                        line-height: 36px;
+                        margin-bottom: 15px;
+                    }
+
+                    p {
+                        width: 650px;
+                        text-align: center;
+                        line-height: 24px;
+                        margin-bottom: 30px;
+                    }
+
+                    .form-biodata {
+                        width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .row {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 20px;
+
+                            .col-6 {
+                                width: 49%;
+                            }
+
+                            .col-12 {
+                                width: 100%;
+                            }
+
+                            .form-group {
+                                display: flex;
+                                flex-direction: column;
+
+                                .box-profile {
+
+                                    .imgProfile {
+                                        width: 0.1px;
+                                        height: 0.1px;
+                                        opacity: 0;
+                                        overflow: hidden;
+                                        position: absolute;
+                                        z-index: -1;
+                                    }
+
+                                    .lblImgProfile {
+                                        width: 100%;
+                                        height: 100px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        border: 1px solid $colorGray;
+                                        border-radius: 20px;
+                                        background-color: rgba($color: $colorDark, $alpha: 0.01);
+                                    }
+                                }
+
+                                label {
+                                    margin-bottom: 10px;
+                                    font-size: 14px;
+                                }
+
+                                input {
+                                    height: 40px;
+                                    border-radius: 20px;
+                                    border: 1px solid $colorGray;
+                                    padding-left: 20px;
+                                    padding-right: 20px;
+                                }
+
+                                select {
+                                    height: 44px;
+                                    border: 1px solid $colorGray;
+                                    border-radius: 20px;
+                                    padding-left: 20px;
+                                    padding-right: 20px;
+                                }
+
+                                textarea {
+                                    border: 1px solid $colorGray;
+                                    border-radius: 20px;
+                                    padding: 10px 20px 10px 20px;
+                                }
+
+                                input:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                                select:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                                textarea:focus {
+                                    border: 1px solid $colorOrange;
+                                }
+
+                            }
+                        }
+
+                        button {
+                            margin-top: 20px;
+                            height: 45px;
+                            width: 200px;
+                            border-radius: 30px;
+                            border: 2px solid $colorOrange;
+                            background-color: $colorOrange;
+                            color: white;
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+    }
+
+
+    #mobile {
+        display: none;
+    }
+
+}
