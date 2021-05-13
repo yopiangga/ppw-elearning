@@ -10,15 +10,25 @@ export function Class() {
 
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
-    const [createClass, setCreateClass] = useState({nameClass: "", id: userLogin.id});
+    const [createClass, setCreateClass] = useState({ nameClass: "", id: userLogin.id });
+
+    const [allClass, setAllClass] = useState([{ id: "", code: "", name: "", id_lecturer: "", lecturer: "" }])
 
     useEffect(() => {
         document.title = "Class | E-learning";
         setMenuActive("class");
+
+        axios.post(`${url.api}class/read-class.php`, { idUser: userLogin.id }).then(
+            (res) => {
+                setAllClass(res.data.data);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
     }, [])
 
     const handleChange = (event) => {
-        setCreateClass({...createClass, [event.target.name] : event.target.value})
+        setCreateClass({ ...createClass, [event.target.name]: event.target.value })
     }
 
     const handleCreateClass = (event) => {
@@ -68,7 +78,7 @@ export function Class() {
                 <div className="card-surat-detail">
                     <div className="card">
                         <div className="card-head">
-                            <h2> </h2>
+                            <h2></h2>
                             <div className="text-arab">
                                 <h1> </h1>
                             </div>
@@ -83,7 +93,33 @@ export function Class() {
 
                 <div className="card-group">
 
-                    <div className="shadow">
+                    {
+                        allClass.map(function (el, idx) {
+                            return (
+                                <div className="shadow" key="idx">
+                                    <div className="card">
+                                        <div className="card-head">
+                                            <div className="circle">{idx+1}</div>
+                                            <div className="icon">
+                                                <FaLongArrowAltRight />
+                                            </div>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="left">
+                                                <h4>{el.name}</h4>
+                                                <h5>{el.lecturer}</h5>
+                                            </div>
+                                            <div className="right">
+                                                <h4>{el.code}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+
+                    {/* <div className="shadow">
                         <div className="card">
                             <div className="card-head">
                                 <div className="circle"></div>
@@ -101,7 +137,7 @@ export function Class() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
 
