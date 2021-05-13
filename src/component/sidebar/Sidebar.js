@@ -4,7 +4,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext } from 'react'
 import logo from '../../assets/images/logo.png'
 import { UserContext } from '../../pages/userContext'
@@ -19,6 +19,11 @@ const handleMenu = () => {
 export function Sidebar() {
 
     const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+
+    // useEffect(() => {
+    //     if()
+    //     document.querySelector('.App').classList.remove('hidden');
+    //   })
 
     const handleSidebar = () => {
         $('.notifikasi').removeClass('active');

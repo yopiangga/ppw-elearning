@@ -5,12 +5,19 @@ import { FaBookReader, FaLongArrowAltRight } from 'react-icons/fa';
 import { UserContext } from '../../pages/userContext';
 import axios from 'axios';
 import $, { data } from 'jquery';
+import { useHistory } from 'react-router';
 
 export function Dashboard() {
 
-    const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
+    const history = useHistory();
+
+    // console.log(userLogin);
     useEffect(() => {
+        if(userLogin == null)
+            history.push('/login');
+
         document.title = "Home | E-learning";
         setMenuActive("home");
         // axios.get(`https://api.quran.sutanlab.id/surah/`).then(

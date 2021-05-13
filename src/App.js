@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   HashRouter,
   BrowserRouter,
@@ -17,7 +17,7 @@ import './assets/scss/mobile-style.css';
 import { Login } from './component/auth/Login';
 import { Sidebar } from './component/sidebar/Sidebar';
 import Navbar from './component/navbar/Navbar';
-import { UserProvider } from "./pages/userContext";
+import { UserContext, UserProvider } from "./pages/userContext";
 import { Dashboard } from "./component/dashboard/Dashboard";
 import { MyClass } from "./component/myClass/MyClass";
 import { MyAssignment } from "./component/myAssignment/MyAssignment";
@@ -26,7 +26,20 @@ import { Assignment } from "./component/assignment/Assignment";
 import { Register } from "./component/auth/Register";
 
 function App() {
-  const [status, setStatus] = useState(0);
+
+  // const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
+
+  // const [status, setStatus] = useState(0);
+
+  useEffect(() => {
+      if(localStorage.getItem('userLogin') == null)
+        document.querySelector('.App').classList.add('hidden');
+      else 
+        document.querySelector('.App').classList.remove('hidden');
+  }, [])
+  
+  // console.log(status);
+
 
   const handleSidebar = () => {
     $('.sidebar').removeClass('active');
@@ -36,8 +49,6 @@ function App() {
   return (
     <UserProvider>
       <HashRouter>
-        {
-          (status != 1) ?
           <div className="login-page">
             <Route path="/login" exact>
               <Login />
@@ -46,8 +57,6 @@ function App() {
               <Register />
             </Route>
           </div>
-
-          : 
 
           <div className="App">
           <Sidebar />
@@ -74,7 +83,7 @@ function App() {
             </div>
           </div>
         </div>
-        }
+        
         
         
       </HashRouter>

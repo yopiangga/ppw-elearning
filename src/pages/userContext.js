@@ -5,35 +5,23 @@ export const UserProvider = props => {
 
   const [menuActive, setMenuActive] = useState();
   const [url, setUrl] = useState({ api: ``, baseUrl: "" });
-  const [lokasi, setLokasi] = useState({ latitude: 0, longitude: 0 });
 
-  const geoLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      console.log("browser anda jelek");
-      localStorage.setItem("latitude", -6.175372);
-      localStorage.setItem("longitude", 106.827194);
-    }
-  }
+  const currentUser = JSON.parse(localStorage.getItem('userLogin'))
+  const iniateUser = currentUser ? currentUser : null
+  const [userLogin, setUserLogin] = useState(iniateUser); 
 
-  const showPosition = (position) => {
-    let data = {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude
-    }
-    localStorage.setItem("latitude", data.latitude);
-    localStorage.setItem("longitude", data.longitude);
-  }
+  // const [userLogin, setUserLogin] = useState({email: "", telp:""});
   
   useEffect( () => {
-    localStorage.setItem("latitude", -6.175372);
-    localStorage.setItem("longitude", 106.827194);
-    geoLocation();
+    setUrl({
+      api: `http://localhost/semester2/ppw/uas/elearning-backend/`,
+      baseUrl: `http://localhost/semester2/ppw/uas/elearning-backend/`
+    })
+
   }, [])
 
   return (
-    <UserContext.Provider value={[menuActive, setMenuActive, url, setUrl, lokasi, setLokasi]}>
+    <UserContext.Provider value={[menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin]}>
       {props.children}
     </UserContext.Provider>
   );

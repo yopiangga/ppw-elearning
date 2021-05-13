@@ -371,6 +371,10 @@
         }
     }
 
+    .App.hidden {
+        display: none;
+    }
+
     .login-page {
         font-family: $fontPrimary;
         

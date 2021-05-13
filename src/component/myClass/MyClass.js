@@ -20,9 +20,9 @@ export function MyClass() {
             <h2>Join Class</h2>
             <div className="action">
                 <form action="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="form-group">
                                 <input type="text" value="" name="codeClass" id="codeClass" placeholder="Code Class" />
                             </div>
                         </div>

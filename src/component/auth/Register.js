@@ -1,44 +1,87 @@
-
+import { useContext, useState } from "react"
+import axios from 'axios';
+import { UserContext } from "../../pages/userContext";
+import { useHistory } from "react-router";
 
 export function Register(){
+
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
+
+    const [createUser, setCreateUser] = useState({email: "", password: "", telp: ""});
+
+    const history = useHistory();
+
+    const handleChange = (event) => {
+        setCreateUser({...createUser, [event.target.name] : event.target.value});
+    }
+
+    const handleLogin = () => {
+        history.push('/login');
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post(`${url.api}auth/register.php`, createUser).then(
+            (res) => {
+                (res.data.msg == "Sign Up Success!") ? 
+                loginSuccess()
+                :
+                loginFailed()
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const loginSuccess = () => {
+        history.push('/login');
+    }
+
+    const loginFailed = () => {
+        setCreateUser({
+            email: "", password: "", telp: ""
+        })
+        history.push('/register');
+    }
+
     return(
-        <div class="login">
-        <div class="login-left">
-            <div class="content">
+        <div className="login">
+        <div className="login-left">
+            <div className="content">
                 <h3>Petikdua</h3>
                 <h1>Get Started with Petikdua</h1>
                 <p>Start your account with special menu.</p>
 
-                <button class="btn-google"> <img src="https://img-authors.flaticon.com/google.jpg" alt="" /> Sign Up with Google</button>
-                <div class="choice-login">
+                <button className="btn-google"> <img src="https://img-authors.flaticon.com/google.jpg" alt="" /> Sign Up with Google</button>
+                <div className="choice-login">
                     <hr />
                     <h6>Or Sign Up Email</h6>
                     <hr />
                 </div>
 
-                <form action="./insert/complete-data.php" method="POST">
-                    <div class="form-group">
+                <form onSubmit={handleSubmit} method="POST">
+                    <div className="form-group">
                         <label>Email address</label>
-                        <i class="fa fa-user"></i>
-                        <input type="email" placeholder="example@petikdua.com" name="email" />
+                        <i className="fa fa-user"></i>
+                        <input type="email" placeholder="example@petikdua.com" name="email" onChange={handleChange}/>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Phone Number</label>
-                        <i class="fa fa-phone"></i>
-                        <input type="text" placeholder="+62 823 3041 0865" name="telp" />
+                        <i className="fa fa-phone"></i>
+                        <input type="text" placeholder="+62 823 3041 0865" name="telp" onChange={handleChange}/>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Password</label>
-                        <i class="fa fa-lock"></i>
-                        <input type="password" placeholder="min 6 character" name="password" />
+                        <i className="fa fa-lock"></i>
+                        <input type="password" placeholder="min 6 character" name="password" onChange={handleChange}/>
                     </div>
-                    <button class="btn-login" type="submit" name="submit">Register</button>
+                    <button className="btn-login" type="submit" name="submit">Register</button>
 
-                    <h6>Have an Account? <a href="./login.php">Login</a></h6>
+                    <h6>Have an Account? <a onClick={handleLogin}>Login</a></h6>
                 </form>
             </div>
         </div>
-        <div class="login-right">
+        <div className="login-right">
             <img src="./assets/images/animation-1.png" alt="" />
             <h2>Designed for Learn Table</h2>
             <p>Lorem ipsum dolor sit amet. Incidunt debitis magnam, culpa a reiciendis molestiae laudantium facilis.</p>
