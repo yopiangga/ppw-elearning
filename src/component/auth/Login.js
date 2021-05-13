@@ -8,7 +8,7 @@ export function Login() {
 
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
-    const [user, setUser] = useState({email: "", password: ""});
+    const [user, setUser] = useState({email: "", password: "", status: "3"});
 
     const history = useHistory();
 
@@ -18,6 +18,7 @@ export function Login() {
 
     const handleChange = (event) => {
         setUser({...user, [event.target.name] : event.target.value});
+        // console.log(user);
     }
 
     const handleRegister = () => {
@@ -26,9 +27,10 @@ export function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(user);
         axios.post(`${url.api}auth/login.php`, user).then(
             (res) => {
-                // console.log(res);
+                console.log(res);
                 (res.data.msg == "Login Success!") ? 
                 successLogin(res.data.data[0])
                  :
@@ -48,7 +50,7 @@ export function Login() {
     }
 
     const failedLogin = () => {
-        setUser({password: ""})
+        setUser({email: "", password: "", status: ""})
         history.push('/login');
     }
 
@@ -77,6 +79,15 @@ export function Login() {
                             <label>Password</label>
                             <i className="fa fa-lock"></i>
                             <input type="password" placeholder="min 6 character" name="password" value={user.password} onChange={handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Status</label>
+                            <i className="fa fa-user"></i>
+                            <select name="status" id="" onChange={handleChange}>
+                                <option disabled>Choose Status</option>
+                                <option value="3">Student</option>
+                                <option value="2">Lecturer</option>
+                            </select>
                         </div>
                         <button className="btn-login" type="submit" name="submit">Login</button>
 

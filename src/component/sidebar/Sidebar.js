@@ -2,7 +2,8 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    Link
+    Link,
+    useHistory
 } from "react-router-dom";
 import React, { useEffect } from 'react';
 import { useContext } from 'react'
@@ -18,16 +19,32 @@ const handleMenu = () => {
 
 export function Sidebar() {
 
-    const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     // useEffect(() => {
     //     if()
     //     document.querySelector('.App').classList.remove('hidden');
     //   })
 
+    const history = useHistory();
+
+    useEffect(() => {
+        if (localStorage.getItem('userLogin') == null) {
+            history.push('/login');
+        }
+
+    }, [])
+
     const handleSidebar = () => {
         $('.notifikasi').removeClass('active');
         $('.sidebar').removeClass('active');
+    }
+
+    const logout = () => {
+        localStorage.clear();
+        setUserLogin(null);
+        document.querySelector('.App').classList.add('hidden');
+        history.push('/login');
     }
 
     return (
@@ -49,25 +66,38 @@ export function Sidebar() {
                             <h4>My Class</h4>
                         </Link>
                     </li>
-                    <li onClick={handleSidebar} className={menuActive == "myAssignment" ? "active" : ""}>
-                        <Link to="/my-assignment" >
-                            <div className="icon"><FaBookmark /> </div>
-                            <h4>My Assignment</h4>
-                        </Link>
-                    </li>
-                    <li onClick={handleSidebar} className={menuActive == "assignment" ? "active" : ""}>
-                        <Link to="/assignment" >
-                            <div className="icon"><FaBookmark /> </div>
-                            <h4>Assignment</h4>
-                        </Link>
-                    </li>
+                    {
+                        (userLogin.status == 2) ?
+                            <li onClick={handleSidebar} className={menuActive == "assignment" ? "active" : ""}>
+                                <Link to="/assignment" >
+                                    <div className="icon"><FaBookmark /> </div>
+                                    <h4>Assignment</h4>
+                                </Link>
+                            </li>
+                            :
+                            <div></div>
+                    }
+
+                    {
+                        (userLogin.status == 3) ?
+                            <li onClick={handleSidebar} className={menuActive == "myAssignment" ? "active" : ""}>
+                                <Link to="/my-assignment" >
+                                    <div className="icon"><FaBookmark /> </div>
+                                    <h4>My Assignment</h4>
+                                </Link>
+                            </li>
+                            :
+                            <div></div>
+
+                    }
+
                     <li onClick={handleSidebar} className={menuActive == "myProfile" ? "active" : ""}>
                         <Link to="/my-profile" >
                             <div className="icon"><FaUserCog /> </div>
                             <h4>My Profile</h4>
                         </Link>
                     </li>
-                    <li onClick={handleSidebar} className={menuActive == "logout" ? "active" : ""}>
+                    <li onClick={logout} className={menuActive == "logout" ? "active" : ""}>
                         <Link to="/logout" >
                             <div className="icon"><FaSignOutAlt /> </div>
                             <h4>Log Out</h4>

@@ -534,7 +534,7 @@
     left: 20px;
     color: rgba(196, 196, 196, 0.5);
   }
-  .login-page .login .login-left .content form .form-group input {
+  .login-page .login .login-left .content form .form-group input, .login-page .login .login-left .content form .form-group select {
     width: 100%;
     height: 50px;
     border-radius: 10px;

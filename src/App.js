@@ -5,6 +5,7 @@ import {
   BrowserRouter,
   Switch,
   Route,
+  useHistory,
 } from "react-router-dom";
 import $ from 'jquery';
 
@@ -32,14 +33,15 @@ function App() {
   // const [status, setStatus] = useState(0);
 
   useEffect(() => {
-      if(localStorage.getItem('userLogin') == null)
-        document.querySelector('.App').classList.add('hidden');
-      else 
-        document.querySelector('.App').classList.remove('hidden');
-  }, [])
-  
-  // console.log(status);
+    if (localStorage.getItem('userLogin') == null)
+      document.querySelector('.App').classList.add('hidden');
+      else {
+      document.querySelector('.App').classList.remove('hidden');
+    }
 
+  }, [])
+
+  // const history = useHistory();
 
   const handleSidebar = () => {
     $('.sidebar').removeClass('active');
@@ -49,22 +51,21 @@ function App() {
   return (
     <UserProvider>
       <HashRouter>
-          <div className="login-page">
-            <Route path="/login" exact>
-              <Login />
-            </Route>
-            <Route path="/register" exact>
-              <Register />
-            </Route>
-          </div>
-
-          <div className="App">
+        <div className="login-page">
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
+          </Route>
+        </div>
+        <div className="App">
           <Sidebar />
           <div className="body">
             <Navbar />
             <div className="body-content" onClick={handleSidebar}>
               <Switch>
-                <Route path="/" exact>
+                <Route path="/dashboard" exact>
                   <Dashboard />
                 </Route>
                 <Route path="/my-class" exact>
@@ -83,11 +84,8 @@ function App() {
             </div>
           </div>
         </div>
-        
-        
-        
       </HashRouter>
-    </UserProvider>
+    </UserProvider >
   );
 }
 
