@@ -21,6 +21,7 @@ export function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // console.log(createUser);
         axios.post(`${url.api}auth/register.php`, createUser).then(
             (res) => {
                 (res.data.msg == "Sign Up Success!") ?
@@ -39,7 +40,7 @@ export function Register() {
 
     const loginFailed = () => {
         setCreateUser({
-            email: "", password: "", telp: ""
+            email: "", password: "", telp: ""   
         })
         history.push('/register');
     }

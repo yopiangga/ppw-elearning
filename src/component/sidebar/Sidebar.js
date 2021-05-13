@@ -42,7 +42,7 @@ export function Sidebar() {
 
     const logout = () => {
         localStorage.clear();
-        setUserLogin(null);
+        setUserLogin({email: "", telp:"", status: "", id: ""});
         document.querySelector('.App').classList.add('hidden');
         history.push('/login');
     }
@@ -60,14 +60,34 @@ export function Sidebar() {
                             <h4>Home</h4>
                         </Link>
                     </li>
-                    <li onClick={handleSidebar} className={menuActive == "myClass" ? "active" : ""}>
-                        <Link to="/my-class" >
-                            <div className="icon"><FaSchool /> </div>
-                            <h4>My Class</h4>
-                        </Link>
-                    </li>
+
                     {
-                        (userLogin.status == 2) ?
+                        (userLogin != null && userLogin.status == 2) ?
+                            <li onClick={handleSidebar} className={menuActive == "class" ? "active" : ""}>
+                                <Link to="/class" >
+                                    <div className="icon"><FaSchool /> </div>
+                                    <h4>Class</h4>
+                                </Link>
+                            </li>
+                            :
+                            <div></div>
+                    }
+
+                    {
+                        (userLogin != null && userLogin.status == 3) ?
+                            <li onClick={handleSidebar} className={menuActive == "myClass" ? "active" : ""}>
+                                <Link to="/my-class" >
+                                    <div className="icon"><FaSchool /> </div>
+                                    <h4>My Class</h4>
+                                </Link>
+                            </li>
+                            :
+                            <div></div>
+                    }
+
+
+                    {
+                        (userLogin != null && userLogin.status == 2) ?
                             <li onClick={handleSidebar} className={menuActive == "assignment" ? "active" : ""}>
                                 <Link to="/assignment" >
                                     <div className="icon"><FaBookmark /> </div>
@@ -79,7 +99,7 @@ export function Sidebar() {
                     }
 
                     {
-                        (userLogin.status == 3) ?
+                        (userLogin != null && userLogin.status == 3) ?
                             <li onClick={handleSidebar} className={menuActive == "myAssignment" ? "active" : ""}>
                                 <Link to="/my-assignment" >
                                     <div className="icon"><FaBookmark /> </div>

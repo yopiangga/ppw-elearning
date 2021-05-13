@@ -25,6 +25,7 @@ import { MyAssignment } from "./component/myAssignment/MyAssignment";
 import { Profile } from "./component/profile/Profile";
 import { Assignment } from "./component/assignment/Assignment";
 import { Register } from "./component/auth/Register";
+import { Class } from "./component/class/Class";
 
 function App() {
 
@@ -70,6 +71,9 @@ function App() {
                 </Route>
                 <Route path="/my-class" exact>
                   <MyClass />
+                </Route>
+                <Route path="/class" exact>
+                  <Class />
                 </Route>
                 <Route path="/my-assignment" exact>
                   <MyAssignment />
