@@ -26,6 +26,7 @@ import { Profile } from "./component/profile/Profile";
 import { Assignment } from "./component/assignment/Assignment";
 import { Register } from "./component/auth/Register";
 import { Class } from "./component/class/Class";
+import { CreateAssignment } from "./component/assignment/CreateAssignment";
 
 function App() {
 
@@ -80,6 +81,9 @@ function App() {
                 </Route>
                 <Route path="/assignment" exact>
                   <Assignment />
+                </Route>
+                <Route path="/create-assignment" exact>
+                  <CreateAssignment />
                 </Route>
                 <Route path="/my-profile" exact>
                   <Profile />

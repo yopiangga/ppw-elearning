@@ -69,7 +69,7 @@ export function MyAssignment() {
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="box-profile">
-                                                <label htmlfor="imgProfile" class="lblImgProfile">File Upload</label>
+                                                <label htmlFor="imgProfile" class="lblImgProfile">File Upload</label>
                                                 <input class="imgProfile" name="imgProfile" id="imgProfile" type="file"></input>
                                             </div>
                                         </div>

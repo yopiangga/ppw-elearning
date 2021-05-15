@@ -696,6 +696,179 @@
     background-color: #ff7a57;
     color: white;
   }
+  .dashboard .bg-model {
+    width: 100%;
+    min-height: 100vh;
+    z-index: 999;
+    left: 0;
+    top: 0;
+  }
+  .dashboard .bg-model .box-model {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .dashboard .bg-model .box-model .form-section {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-bottom: 80px;
+  }
+  .dashboard .bg-model .box-model .form-section .content {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    min-height: 500px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    min-height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 0px;
+    text-align: center;
+    line-height: 36px;
+    margin-bottom: 15px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box p {
+    width: 650px;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata {
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .col-6 {
+    width: 49%;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .col-12 {
+    width: 100%;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group .box-profile .imgProfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group .box-profile .lblImgProfile {
+    width: 100%;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    background-color: rgba(57, 57, 57, 0.01);
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group label {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group input {
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #C4C4C4;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group select {
+    height: 44px;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group textarea {
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group input:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group select:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group textarea:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata button {
+    margin-top: 20px;
+    height: 45px;
+    width: 200px;
+    border-radius: 30px;
+    border: 2px solid #ff7a57;
+    background-color: #ff7a57;
+    color: white;
+  }
   .dashboard .card-assignment {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1065,7 +1238,7 @@
             box-shadow: -20px 20px 40px rgba(57, 57, 57, 0.12);
     background-color: #ECF0F3;
     width: 250px;
-    height: 110px;
+    min-height: 110px;
     border-radius: 20px;
     padding: 15px 15px 15px 15px;
   }
@@ -1129,14 +1302,19 @@
   .dashboard .card-group .shadow .card .card-body h4 {
     font-weight: 500;
     margin-bottom: 10px;
+    line-height: 24px;
   }
   .dashboard .card-group .shadow .card .card-body h5 {
     color: #393939;
     font-size: 14px;
     line-height: 24px;
+    font-weight: 500;
+  }
+  .dashboard .card-group .shadow .card .card-body h5 span {
+    font-weight: 400;
   }
   .dashboard .card-group .shadow .card .card-body .right h4 {
-    font-size: 24px;
+    font-size: 20px;
     color: #393939;
   }
   .dashboard .card-group .shadow .card:hover .card-head .icon svg {

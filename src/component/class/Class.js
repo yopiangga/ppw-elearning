@@ -96,7 +96,7 @@ export function Class() {
                     {
                         allClass.map(function (el, idx) {
                             return (
-                                <div className="shadow" key="idx">
+                                <div className="shadow" key={idx}>
                                     <div className="card">
                                         <div className="card-head">
                                             <div className="circle">{idx+1}</div>

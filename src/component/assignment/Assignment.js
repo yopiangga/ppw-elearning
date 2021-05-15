@@ -7,22 +7,42 @@ import axios from 'axios';
 import $, { data } from 'jquery';
 
 import example from './../../assets/images/example.jpg';
+import { useHistory } from 'react-router';
 
 export function Assignment() {
 
-    const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin, createAssignment, setCreateAssignment] = useContext(UserContext);
+
+    const [assignment, setAssignment] = useState([{ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" }])
+    const [assignmentNumber, setAssignmentNumber] = useState(0);
+    const [assignmentDetail, setAssignmentDetail] = useState({ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" });
 
     useEffect(() => {
         document.title = "Assignment | E-learning";
         setMenuActive("assignment");
+
+        axios.post(`${url.api}assignment/read-assignment.php`, { idUser: userLogin.id }).then(
+            (res) => {
+                // console.log(res);
+                setAssignment(res.data.data);
+                // history.push('/assignment');
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+
     }, [])
 
-    const handleClick = (event) => {
-        let id = event.target.id;
+    const history = useHistory();
+
+    const handleClick = (idx) => {
         $('#audio').stop();
         $('.card-assignment-detail').addClass('active');
         $('.card-group').addClass('nano');
         $('.circle-book').addClass('active');
+
+        setAssignmentNumber(idx);
+        setAssignmentDetail(assignment[idx]);
     }
 
     const handleAssignment = () => {
@@ -31,15 +51,27 @@ export function Assignment() {
         $('.circle-book').removeClass('active');
     }
 
+    const handleCreateAssignment = (event) => {
+        event.preventDefault();
+        history.push('/create-assignment');
+    }
+
+    const handleChangeAssignment = (event) => {
+        setCreateAssignment({
+            ...createAssignment,
+            [event.target.name]: event.target.value
+        })
+    }
+
     return (
         <div className="dashboard">
             <h2>Create Assignment</h2>
             <div className="action">
-                <form action="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <input type="text" name="codeClass" id="codeClass" placeholder="Title Assignment" />
+                <form onSubmit={handleCreateAssignment}>
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="form-group">
+                                <input type="text" name="title" id="title" placeholder="Title Assignment" onChange={handleChangeAssignment} />
                             </div>
                         </div>
                     </div>
@@ -61,49 +93,39 @@ export function Assignment() {
                             </div>
 
                             <div className="title">
-                                <h2>bla bla bla</h2>
+                                <h2>{assignmentDetail.title}</h2>
                                 <div className="information">
-                                    <h5>Mata kuliah</h5>
-                                    <h6>18 June 2021</h6>
+                                    <h5>{assignmentDetail.classId}</h5>
+                                    <h6>{assignmentDetail.dueTime} {assignmentDetail.dueDate}</h6>
                                 </div>
                             </div>
 
                             <div className="skor">
-                                <h4>100/100</h4>
+                                <h4>{assignmentDetail.minRate} - {assignmentDetail.maxRate}</h4>
                             </div>
                         </div>
                         <div className="card-body">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, sit. Architecto in qui vitae eum, omnis aut dolorem quisquam, sapiente beatae minima voluptatem tenetur natus deserunt repellendus blanditiis facilis earum?</p>
+                            <p>{assignmentDetail.description}</p>
                         </div>
                         <div className="card-action">
                             <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="box-profile">
-                                                <label for="imgProfile" class="lblImgProfile">File Upload</label>
-                                                <input class="imgProfile" name="imgProfile" id="imgProfile" type="file"></input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button>Submit</button>
+                                <button>Edit Assignment</button>
                             </form>
                         </div>
                     </div>
 
 
-                    <div class="table-section">
-                        <div class="content">
-                            <div class="table">
+                    <div className="table-section">
+                        <div className="content">
+                            <div className="table">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="rank">No</th>
+                                            <th className="rank">No</th>
                                             <th>NRP</th>
                                             <th>Name</th>
                                             <th>Rate</th>
-                                            <th class="skor">Action</th>
+                                            <th className="skor">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,9 +134,9 @@ export function Assignment() {
                                             <td>3120600001</td>
                                             <td>aa</td>
                                             <td>bb</td>
-                                            <td class="skor">
-                                                <a href="" class="badge badge-danger">Delete</a>
-                                                <a href="" class="badge badge-primary">Rate</a>
+                                            <td className="skor">
+                                                <a href="" className="badge badge-danger">Delete</a>
+                                                <a href="" className="badge badge-primary">Rate</a>
                                             </td>
                                         </tr>
 
@@ -129,25 +151,31 @@ export function Assignment() {
 
                 <div className="card-group">
 
-                    <div className="shadow">
-                        <div className="card">
-                            <div className="card-head">
-                                <div className="circle"></div>
-                                <div className="icon" onClick={handleClick}>
-                                    <FaLongArrowAltRight />
+                    {
+                        assignment.map(function (el, idx) {
+                            return (
+                                <div className="shadow" key={idx}>
+                                    <div className="card">
+                                        <div className="card-head">
+                                            <div className="circle">{idx+1}</div>
+                                            <div className="icon" onClick={() => handleClick(idx)}>
+                                                <FaLongArrowAltRight />
+                                            </div>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="left">
+                                                <h4>{el.title}</h4>
+                                                <h5>{el.classId} <span>{el.dueDate}</span></h5>
+                                            </div>
+                                            <div className="right" style={{display: 'none'}}>
+                                                <h4>{el.dueDate}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card-body">
-                                <div className="left">
-                                    <h4></h4>
-                                    <h5></h5>
-                                </div>
-                                <div className="right">
-                                    <h4></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
 
                 </div>
 

@@ -10,18 +10,10 @@ export const UserProvider = props => {
   const iniateUser = currentUser ? currentUser : null
   const [userLogin, setUserLogin] = useState(iniateUser); 
 
-  // const [userLogin, setUserLogin] = useState({email: "", telp:""});
-    
-  // useEffect( () => {
-  //   setUrl({
-  //     api: `http://127.0.0.1:80/semester2/ppw/uas/elearning-backend/`,
-  //     baseUrl: `http://127.0.0.1/semester2/ppw/uas/elearning-backend/`
-  //   })
-
-  // }, [])
+  const [createAssignment, setCreateAssignment] = useState({title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: ""});
 
   return (
-    <UserContext.Provider value={[menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin]}>
+    <UserContext.Provider value={[menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin, createAssignment, setCreateAssignment]}>
       {props.children}
     </UserContext.Provider>
   );

@@ -660,6 +660,169 @@
             }
         }
 
+        .bg-model {
+            width: 100%;
+            min-height: 100vh;
+            z-index: 999;
+            left: 0;
+            top: 0;
+
+            .box-model {
+                display: flex;
+                justify-content: center;
+
+                .form-section {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    padding-bottom: 80px;
+        
+                    .content {
+                        width: 100%;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        min-height: 500px;
+                        // align-items: center;
+        
+                        .form-box {
+                            position: relative;
+                            z-index: 1;
+                            // top: 80px;
+                            width: 90%;
+                            min-height: 500px;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: white;
+                            // box-shadow: 0px 30px 60px rgba($color: $colorDark, $alpha: 0.1);
+                            border-radius: 20px;
+                            align-items: center;
+                            padding-top: 40px;
+                            padding-bottom: 40px;
+        
+                            h2 {
+                                font-size: 28px;
+                                font-weight: 500;
+                                margin-top: 0px;
+                                text-align: center;
+                                line-height: 36px;
+                                margin-bottom: 15px;
+                            }
+        
+                            p {
+                                width: 650px;
+                                text-align: center;
+                                line-height: 24px;
+                                margin-bottom: 30px;
+                            }
+        
+                            .form-biodata {
+                                width: 80%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+        
+                                .row {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    margin-bottom: 20px;
+        
+                                    .col-6 {
+                                        width: 49%;
+                                    }
+        
+                                    .col-12 {
+                                        width: 100%;
+                                    }
+        
+                                    .form-group {
+                                        display: flex;
+                                        flex-direction: column;
+        
+                                        .box-profile {
+        
+                                            .imgProfile {
+                                                width: 0.1px;
+                                                height: 0.1px;
+                                                opacity: 0;
+                                                overflow: hidden;
+                                                position: absolute;
+                                                z-index: -1;
+                                            }
+        
+                                            .lblImgProfile {
+                                                width: 100%;
+                                                height: 100px;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                border: 1px solid $colorGray;
+                                                border-radius: 20px;
+                                                background-color: rgba($color: $colorDark, $alpha: 0.01);
+                                            }
+                                        }
+        
+                                        label {
+                                            margin-bottom: 10px;
+                                            font-size: 14px;
+                                        }
+        
+                                        input {
+                                            height: 40px;
+                                            border-radius: 20px;
+                                            border: 1px solid $colorGray;
+                                            padding-left: 20px;
+                                            padding-right: 20px;
+                                        }
+        
+                                        select {
+                                            height: 44px;
+                                            border: 1px solid $colorGray;
+                                            border-radius: 20px;
+                                            padding-left: 20px;
+                                            padding-right: 20px;
+                                        }
+        
+                                        textarea {
+                                            border: 1px solid $colorGray;
+                                            border-radius: 20px;
+                                            padding: 10px 20px 10px 20px;
+                                        }
+        
+                                        input:focus {
+                                            border: 1px solid $colorOrange;
+                                        }
+        
+                                        select:focus {
+                                            border: 1px solid $colorOrange;
+                                        }
+        
+                                        textarea:focus {
+                                            border: 1px solid $colorOrange;
+                                        }
+        
+                                    }
+                                }
+        
+                                button {
+                                    margin-top: 20px;
+                                    height: 45px;
+                                    width: 200px;
+                                    border-radius: 30px;
+                                    border: 2px solid $colorOrange;
+                                    background-color: $colorOrange;
+                                    color: white;
+                                }
+        
+                            }
+                        }
+        
+                    }
+                }
+            }
+        }
+
         .card-assignment {
             display: flex;
         }
@@ -1001,7 +1164,7 @@
                     box-shadow: -20px 20px 40px rgba($color: $colorDark, $alpha: 0.12);
                     background-color: $colorLight;
                     width: 250px;
-                    height: 110px;
+                    min-height: 110px;
                     border-radius: 20px;
                     padding: 15px 15px 15px 15px;
 
@@ -1048,17 +1211,23 @@
                         h4 {
                             font-weight: 500;
                             margin-bottom: 10px;
+                            line-height: 24px;
                         }
 
                         h5 {
                             color: $colorDark;
                             font-size: 14px;
                             line-height: 24px;
+                            font-weight: 500;
+
+                            span {
+                                font-weight: 400;
+                            }
                         }
 
                         .right {
                             h4 {
-                                font-size: 24px;
+                                font-size: 20px;
                                 color: $colorDark;
                             }
                         }
