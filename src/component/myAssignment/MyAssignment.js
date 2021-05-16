@@ -10,19 +10,50 @@ import example from './../../assets/images/example.jpg';
 
 export function MyAssignment() {
 
-    const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
+
+    const [ass, setAss] = useState([{
+        id: "",
+        title: "",
+        className: "",
+        description: "",
+        minRate: "",
+        maxRate: "",
+        dueTime: "",
+        dueDate: ""
+    }])
+
+    const [assDetail, setAssDetail] = useState({
+        id: "",
+        title: "",
+        className: "",
+        description: "",
+        minRate: "",
+        maxRate: "",
+        dueTime: "",
+        dueDate: ""
+    })
 
     useEffect(() => {
         document.title = "Assignment | E-learning";
         setMenuActive("myAssignment");
+
+        axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
+            (res) => {
+                setAss(res.data.data);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
     }, [])
 
-    const handleClick = (event) => {
-        let id = event.target.id;
+    const handleClick = (idx) => {
         $('#audio').stop();
         $('.card-assignment-detail').addClass('active');
         $('.card-group').addClass('nano');
         $('.circle-book').addClass('active');
+
+        setAssDetail(ass[idx]);
     }
 
     const handleAssignment = () => {
@@ -41,7 +72,7 @@ export function MyAssignment() {
 
                 <div className="card-assignment-detail">
                     <div className="card">
-                        <div className="card-head">
+                    <div className="card-head">
                             <div className="img">
                                 <div className="circle">
                                     <img src={example} alt="" />
@@ -49,28 +80,28 @@ export function MyAssignment() {
                             </div>
 
                             <div className="title">
-                                <h2>bla bla bla</h2>
+                                <h2>{assDetail.title}</h2>
                                 <div className="information">
-                                    <h5>Mata kuliah</h5>
-                                    <h6>18 June 2021</h6>
+                                    <h5>{assDetail.classId}</h5>
+                                    <h6>{assDetail.dueTime} {assDetail.dueDate}</h6>
                                 </div>
                             </div>
 
                             <div className="skor">
-                                <h4>100/100</h4>
+                                <h4>{assDetail.minRate} - {assDetail.maxRate}</h4>
                             </div>
                         </div>
                         <div className="card-body">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, sit. Architecto in qui vitae eum, omnis aut dolorem quisquam, sapiente beatae minima voluptatem tenetur natus deserunt repellendus blanditiis facilis earum?</p>
+                            <p>{assDetail.description}</p>
                         </div>
                         <div className="card-action">
                             <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="box-profile">
-                                                <label htmlFor="imgProfile" class="lblImgProfile">File Upload</label>
-                                                <input class="imgProfile" name="imgProfile" id="imgProfile" type="file"></input>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="form-group">
+                                            <div className="box-profile">
+                                                <label htmlFor="imgProfile" className="lblImgProfile">File Upload</label>
+                                                <input className="imgProfile" name="imgProfile" id="imgProfile" type="file"></input>
                                             </div>
                                         </div>
                                     </div>
@@ -84,25 +115,31 @@ export function MyAssignment() {
 
                 <div className="card-group">
 
-                    <div className="shadow">
-                        <div className="card">
-                            <div className="card-head">
-                                <div className="circle"></div>
-                                <div className="icon" onClick={handleClick}>
-                                    <FaLongArrowAltRight />
+                    {
+                        ass.map(function (el, idx) {
+                            return (
+                                <div className="shadow" key={idx}>
+                                    <div className="card">
+                                        <div className="card-head">
+                                            <div className="circle">{idx+1}</div>
+                                            <div className="icon" onClick={()=>handleClick(idx)}>
+                                                <FaLongArrowAltRight />
+                                            </div>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="left">
+                                                <h4>{el.title}</h4>
+                                                <h5>{el.className} <span>{el.dueDate}</span></h5>
+                                            </div>
+                                            <div className="right" style={{display: 'none'}}>
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card-body">
-                                <div className="left">
-                                    <h4></h4>
-                                    <h5></h5>
-                                </div>
-                                <div className="right">
-                                    <h4></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
 
                 </div>
 

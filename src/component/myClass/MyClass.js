@@ -8,22 +8,52 @@ import $, { data } from 'jquery';
 
 export function MyClass() {
 
-    const [menuActive, setMenuActive, url, setUrl] = useContext(UserContext);
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
+
+    const [enroll, setEnroll] = useState({ codeClass: "" });
+    const [myClass, setMyClass] = useState([{ id: "", code: "", name: "", nameLecturer: "" }]);
 
     useEffect(() => {
         document.title = "Class | E-learning";
         setMenuActive("myClass");
+
+        axios.post(`${url.api}myClass/read-myClass.php`, { idUser: userLogin.id }).then(
+            (res) => {
+                // console.log(res);
+                setMyClass(res.data.data);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
     }, [])
+
+    const handleChangeCode = (event) => {
+        setEnroll({
+            ...enroll,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    const handleEnroll = (event) => {
+        event.preventDefault();
+        axios.post(`${url.api}myClass/enroll.php`, { codeClass: enroll.codeClass, idUser: userLogin.id }).then(
+            (res) => {
+                console.log(res);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+    }
 
     return (
         <div className="dashboard">
             <h2>Join Class</h2>
             <div className="action">
-                <form action="">
+                <form onSubmit={handleEnroll}>
                     <div className="row">
                         <div className="col-12">
                             <div className="form-group">
-                                <input type="text" value="" name="codeClass" id="codeClass" placeholder="Code Class" />
+                                <input type="text" value={enroll.codeClass} name="codeClass" id="codeClass" placeholder="Code Class" onChange={handleChangeCode} />
                             </div>
                         </div>
                     </div>
@@ -54,25 +84,31 @@ export function MyClass() {
 
                 <div className="card-group">
 
-                    <div className="shadow">
-                        <div className="card">
-                            <div className="card-head">
-                                <div className="circle"></div>
-                                <div className="icon">
-                                    <FaLongArrowAltRight />
+                    {
+                        myClass.map(function (el, idx) {
+                            return (
+                                <div className="shadow" key={idx}>
+                                    <div className="card">
+                                        <div className="card-head">
+                                            <div className="circle">{idx+1}</div>
+                                            <div className="icon">
+                                                <FaLongArrowAltRight />
+                                            </div>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="left">
+                                                <h4>{el.name}</h4>
+                                                <h5>{el.nameLecturer}</h5>
+                                            </div>
+                                            <div className="right">
+                                                <h4>{el.code}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card-body">
-                                <div className="left">
-                                    <h4></h4>
-                                    <h5></h5>
-                                </div>
-                                <div className="right">
-                                    <h4></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
 
                 </div>
 

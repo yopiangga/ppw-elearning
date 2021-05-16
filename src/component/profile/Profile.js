@@ -10,7 +10,6 @@ export function Profile() {
     useEffect(() => {
         document.title = "My Profile | E-learning";
         setMenuActive("myProfile");
-
         axios.post(`${url.api}profile/read-profile.php`, { idUser: userLogin.id , status: userLogin.status}).then(
             (res) => {
                 setUser(res.data.data[0]);
