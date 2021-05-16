@@ -6,6 +6,7 @@ import { UserContext } from "../../pages/userContext";
 
 export function Login() {
 
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     const [user, setUser] = useState({email: "", password: "", status: "3"});
 

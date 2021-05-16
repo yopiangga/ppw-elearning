@@ -10,6 +10,7 @@ import example from './../../assets/images/example.jpg';
 
 export function MyAssignment() {
 
+    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     const [ass, setAss] = useState([{
         id: "",
