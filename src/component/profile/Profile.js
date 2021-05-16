@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from '../../pages/userContext';
 
 export function Profile() {
-    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
     
     const [user, setUser] = useState({email: "", telp: "", password1: "", password2: "", fullName: "", nickName: "", university: "", fields: "", placeBirth: "", dateBirth: "", gender: "", zipCode: "", address: ""});
 

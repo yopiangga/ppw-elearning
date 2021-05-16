@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 
 export function Register() {
 
-    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     const [createUser, setCreateUser] = useState({ email: "", password: "", telp: "", status: "3"});
 

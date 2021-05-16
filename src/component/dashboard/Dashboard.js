@@ -9,7 +9,6 @@ import { useHistory } from 'react-router';
 
 export function Dashboard() {
 
-    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     const history = useHistory();
 

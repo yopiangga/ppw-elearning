@@ -19,7 +19,6 @@ const handleMenu = () => {
 
 export function Sidebar() {
 
-    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
 
     // useEffect(() => {
     //     if()

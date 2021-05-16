@@ -8,8 +8,6 @@ import $, { data } from 'jquery';
 
 export function MyClass() {
 
-    const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
-
     const [enroll, setEnroll] = useState({ codeClass: "" });
     const [myClass, setMyClass] = useState([{ id: "", code: "", name: "", nameLecturer: "" }]);
 
