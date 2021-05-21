@@ -52,7 +52,7 @@ function App() {
 
   return (
     <UserProvider>
-      <HashRouter>
+      <BrowserRouter>
         <div className="login-page">
           <Route path="/login" exact>
             <Login />
@@ -92,7 +92,7 @@ function App() {
             </div>
           </div>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </UserProvider >
   );
 }

@@ -34,6 +34,8 @@ export function MyAssignment() {
         dueDate: ""
     })
 
+    const [gambar, setGambar] = useState({});
+
     useEffect(() => {
         document.title = "Assignment | E-learning";
         setMenuActive("myAssignment");
@@ -62,6 +64,51 @@ export function MyAssignment() {
         $('.circle-book').removeClass('active');
     }
 
+    const handleSubmitAssignment = (event) => {
+        event.preventDefault();
+        let formData = new FormData();
+        formData.append('image', gambar);
+
+        formData.append('idUser', userLogin.id);
+        formData.append('idAss', assDetail.id);
+        formData.append('title', assDetail.title);
+        formData.append('className', assDetail.className);
+        formData.append('description', assDetail.description);
+        formData.append('minRate', assDetail.minRate);
+        formData.append('maxRate', assDetail.maxRate);
+        formData.append('dueTime', assDetail.dueTime);
+        formData.append('dueDate', assDetail.dueDate);
+
+        axios({
+            url: `${url.api}myAssignment/submit-assignment.php`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            data: formData
+        }).then(
+            (res) => {
+                console.log(res);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+
+        // axios.post(`${url.api}/myAssignment/submit-assignment.php`, {header : "Content-Type: 'multipart/form-data'", formData, data: assDetail}).then(
+        //     (res) => {
+        //         console.log(res);
+        //     }
+        // ).catch(
+        //     (err) => {
+        //         console.log(err);
+        //     }
+        // )
+    }
+    
+    const handleChangeAssignemnt = (event) => {
+        setGambar(event.target.files[0]);
+    }
+
     return (
         <div className="dashboard">
             <div className="filter">
@@ -72,7 +119,7 @@ export function MyAssignment() {
 
                 <div className="card-assignment-detail">
                     <div className="card">
-                    <div className="card-head">
+                        <div className="card-head">
                             <div className="img">
                                 <div className="circle">
                                     <img src={example} alt="" />
@@ -95,13 +142,13 @@ export function MyAssignment() {
                             <p>{assDetail.description}</p>
                         </div>
                         <div className="card-action">
-                            <form>
+                            <form onSubmit={handleSubmitAssignment} method="POST">
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="form-group">
                                             <div className="box-profile">
-                                                <label htmlFor="imgProfile" className="lblImgProfile">File Upload</label>
-                                                <input className="imgProfile" name="imgProfile" id="imgProfile" type="file"></input>
+                                                <label htmlFor="imgAssignment" className="lblImgProfile">File Upload</label>
+                                                <input className="imgProfile" name="imgAssignment" id="imgAssignment" type="file" onChange={handleChangeAssignemnt}></input>
                                             </div>
                                         </div>
                                     </div>
@@ -121,8 +168,8 @@ export function MyAssignment() {
                                 <div className="shadow" key={idx}>
                                     <div className="card">
                                         <div className="card-head">
-                                            <div className="circle">{idx+1}</div>
-                                            <div className="icon" onClick={()=>handleClick(idx)}>
+                                            <div className="circle">{idx + 1}</div>
+                                            <div className="icon" onClick={() => handleClick(idx)}>
                                                 <FaLongArrowAltRight />
                                             </div>
                                         </div>
@@ -131,7 +178,7 @@ export function MyAssignment() {
                                                 <h4>{el.title}</h4>
                                                 <h5>{el.className} <span>{el.dueDate}</span></h5>
                                             </div>
-                                            <div className="right" style={{display: 'none'}}>
+                                            <div className="right" style={{ display: 'none' }}>
                                                 <h4></h4>
                                             </div>
                                         </div>
