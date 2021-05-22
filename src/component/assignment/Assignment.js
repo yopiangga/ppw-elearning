@@ -16,6 +16,11 @@ export function Assignment() {
     const [assignment, setAssignment] = useState([{ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" }])
     const [assignmentNumber, setAssignmentNumber] = useState(0);
     const [assignmentDetail, setAssignmentDetail] = useState({ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" });
+    const [collectAss, setCollectAss] = useState([{
+        idStudent: "",
+        name: "",
+        rate: ""
+    }])
 
     useEffect(() => {
         document.title = "Assignment | E-learning";
@@ -23,9 +28,7 @@ export function Assignment() {
 
         axios.post(`${url.api}assignment/read-assignment.php`, { idUser: userLogin.id }).then(
             (res) => {
-                // console.log(res);
                 setAssignment(res.data.data);
-                // history.push('/assignment');
             }
         ).catch((err) => {
             console.log(err);
@@ -35,7 +38,7 @@ export function Assignment() {
 
     const history = useHistory();
 
-    const handleClick = (idx) => {
+    const handleClick = (idx, id) => {
         $('#audio').stop();
         $('.card-assignment-detail').addClass('active');
         $('.card-group').addClass('nano');
@@ -43,6 +46,15 @@ export function Assignment() {
 
         setAssignmentNumber(idx);
         setAssignmentDetail(assignment[idx]);
+
+        axios.post(`${url.api}assignment/collect-assignment.php`, { idUser: userLogin.id , idAss: id}).then(
+            (res) => {
+                setCollectAss(res.data.data);
+                // console.log(res);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
     }
 
     const handleAssignment = () => {
@@ -129,16 +141,22 @@ export function Assignment() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>3120600001</td>
-                                            <td>aa</td>
-                                            <td>bb</td>
-                                            <td className="skor">
-                                                <a href="" className="badge badge-danger">Delete</a>
-                                                <a href="" className="badge badge-primary">Rate</a>
-                                            </td>
-                                        </tr>
+                                        {
+                                            collectAss.map(function (el, idx) {
+                                                return (
+                                                    <tr key={idx}>
+                                                        <th>{idx+1}</th>
+                                                        <td>{el.idStudent}</td>
+                                                        <td>{el.name}</td>
+                                                        <td>{el.rate}</td>
+                                                        <td className="skor">
+                                                            <a href="" className="badge badge-danger">Delete</a>
+                                                            <a href="" className="badge badge-primary">Rate</a>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
 
                                     </tbody>
                                 </table>
@@ -157,8 +175,8 @@ export function Assignment() {
                                 <div className="shadow" key={idx}>
                                     <div className="card">
                                         <div className="card-head">
-                                            <div className="circle">{idx+1}</div>
-                                            <div className="icon" onClick={() => handleClick(idx)}>
+                                            <div className="circle">{idx + 1}</div>
+                                            <div className="icon" onClick={() => handleClick(idx, el.id)}>
                                                 <FaLongArrowAltRight />
                                             </div>
                                         </div>
@@ -167,7 +185,7 @@ export function Assignment() {
                                                 <h4>{el.title}</h4>
                                                 <h5>{el.classId} <span>{el.dueDate}</span></h5>
                                             </div>
-                                            <div className="right" style={{display: 'none'}}>
+                                            <div className="right" style={{ display: 'none' }}>
                                                 <h4>{el.dueDate}</h4>
                                             </div>
                                         </div>

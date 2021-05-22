@@ -933,6 +933,9 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .dashboard .card-assignment-detail .card .card-head .title .information h5 {
     font-size: 14px;
@@ -942,6 +945,17 @@
     font-size: 12px;
     color: #393939;
     opacity: 0.9;
+    margin-right: 20px;
+  }
+  .dashboard .card-assignment-detail .card .card-head .title .information span {
+    padding: 3px 5px 3px 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #ff7a57;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
   }
   .dashboard .card-assignment-detail .card .card-head .skor {
     width: 10%;

@@ -36,6 +36,14 @@ export function MyAssignment() {
 
     const [gambar, setGambar] = useState({});
 
+    const [collect, setCollect] = useState([{
+        id: "",
+        idAssignment: "",
+        createAt: "",
+        updateAt: "",
+        idStudent: ""
+    }]);
+
     useEffect(() => {
         document.title = "Assignment | E-learning";
         setMenuActive("myAssignment");
@@ -43,6 +51,8 @@ export function MyAssignment() {
         axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
             (res) => {
                 setAss(res.data.data);
+                setCollect(res.data.collect);
+                console.log(res.data);
             }
         ).catch((err) => {
             console.log(err);
@@ -94,19 +104,32 @@ export function MyAssignment() {
             console.log(err);
         })
 
-        // axios.post(`${url.api}/myAssignment/submit-assignment.php`, {header : "Content-Type: 'multipart/form-data'", formData, data: assDetail}).then(
-        //     (res) => {
-        //         console.log(res);
-        //     }
-        // ).catch(
-        //     (err) => {
-        //         console.log(err);
-        //     }
-        // )
     }
-    
+
     const handleChangeAssignemnt = (event) => {
         setGambar(event.target.files[0]);
+    }
+
+    const checkStatus = (id) => {
+        var i;
+
+        for (i = 0; i < collect.length; i++) {
+            if (collect[i].idAssignment == id)
+                return (collect[i].createAt);
+            else
+                return (0);
+        }
+    }
+
+    const checkNilai = (id) => {
+        var i;
+
+        for (i = 0; i < collect.length; i++) {
+            if (collect[i].idAssignment == id)
+                return (collect[i].rate);
+            else
+                return (0);
+        }
     }
 
     return (
@@ -129,33 +152,56 @@ export function MyAssignment() {
                             <div className="title">
                                 <h2>{assDetail.title}</h2>
                                 <div className="information">
-                                    <h5>{assDetail.classId}</h5>
+                                    <h5>{assDetail.className}</h5>
                                     <h6>{assDetail.dueTime} {assDetail.dueDate}</h6>
+                                    {
+                                        (checkStatus(assDetail.id) ?
+                                            <span> Completed
+                                            </span>
+                                            :
+                                            <div></div>
+                                        )
+                                    }
+
                                 </div>
                             </div>
 
                             <div className="skor">
-                                <h4>{assDetail.minRate} - {assDetail.maxRate}</h4>
+
+                                {
+                                    (checkStatus(assDetail.id) ?
+                                        <h4>{checkNilai(assDetail.id)} / {assDetail.maxRate}</h4>
+                                        :
+                                        <h4>{assDetail.minRate} - {assDetail.maxRate}</h4>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className="card-body">
                             <p>{assDetail.description}</p>
                         </div>
-                        <div className="card-action">
-                            <form onSubmit={handleSubmitAssignment} method="POST">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="form-group">
-                                            <div className="box-profile">
-                                                <label htmlFor="imgAssignment" className="lblImgProfile">File Upload</label>
-                                                <input className="imgProfile" name="imgAssignment" id="imgAssignment" type="file" onChange={handleChangeAssignemnt}></input>
+                        {
+                            (checkStatus(assDetail.id) ?
+                                <div></div>
+                                :
+                                <div className="card-action">
+                                    <form onSubmit={handleSubmitAssignment} method="POST">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="form-group">
+                                                    <div className="box-profile">
+                                                        <label htmlFor="imgAssignment" className="lblImgProfile">File Upload</label>
+                                                        <input className="imgProfile" name="imgAssignment" id="imgAssignment" type="file" onChange={handleChangeAssignemnt}></input>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <button>Submit</button>
+                                    </form>
                                 </div>
-                                <button>Submit</button>
-                            </form>
-                        </div>
+                            )
+                        }
+
                     </div>
 
                 </div>
