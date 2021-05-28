@@ -210,6 +210,7 @@ export function MyAssignment() {
                 <div className="card-group">
 
                     {
+                        (ass != null) ? 
                         ass.map(function (el, idx) {
                             return (
                                 <div className="shadow" key={idx}>
@@ -233,6 +234,8 @@ export function MyAssignment() {
                                 </div>
                             )
                         })
+                        :
+                        <div></div>
                     }
 
                 </div>

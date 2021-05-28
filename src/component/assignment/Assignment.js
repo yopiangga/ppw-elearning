@@ -115,6 +115,16 @@ export function Assignment() {
         document.querySelector('.modal').classList.remove('active');
     }
 
+    const handleDeleteCollect = (id) => {
+        axios.post(`${url.api}assignment/delete-collect-assignment.php`, {id: id}).then(
+            (res) => {
+                handleReqCollect(idCollect);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+    }
+
     const handleView = (id) => {
         let url = collectAss[id].file;
 
@@ -227,6 +237,7 @@ export function Assignment() {
                                                     </div> */}
 
                                         {
+                                            (collectAss != null) ? 
                                             collectAss.map(function (el, idx) {
                                                 return (
                                                     <div className="row">
@@ -236,13 +247,15 @@ export function Assignment() {
                                                         <div className="td">{el.createAt}</div>
                                                         <div className="td small">{el.rate}</div>
                                                         <div className="td">
-                                                            <a href="" className="badge badge-danger">Delete</a>
+                                                            <a onClick={() => handleDeleteCollect(el.idCollect)} className="badge badge-danger">Delete</a>
                                                             <a onClick={() => handleChangeRate(el.idCollect, idx)} className="badge badge-primary">Rate</a>
                                                             <a onClick={() => handleView(idx)} className="badge badge-primary">View</a>
                                                         </div>
                                                     </div>
                                                 )
                                             })
+                                            :
+                                            <div></div>
                                         }
                                     </div>
                                 </div>

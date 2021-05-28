@@ -94,6 +94,7 @@ export function Class() {
                 <div className="card-group">
 
                     {
+                        (allClass != null) ? 
                         allClass.map(function (el, idx) {
                             return (
                                 <div className="shadow" key={idx}>
@@ -117,6 +118,8 @@ export function Class() {
                                 </div>
                             )
                         })
+                        :
+                        <div></div>
                     }
 
                     {/* <div className="shadow">
