@@ -377,7 +377,7 @@
 
     .login-page {
         font-family: $fontPrimary;
-        
+
         .login {
             display: flex;
             justify-content: space-between;
@@ -483,7 +483,8 @@
                                 color: rgba($color: $colorGray, $alpha: 0.5);
                             }
 
-                            input, select {
+                            input,
+                            select {
                                 width: 100%;
                                 height: 50px;
                                 border-radius: 10px;
@@ -575,6 +576,178 @@
             font-weight: 500;
             margin-bottom: 30px;
             margin-top: 30px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 999;
+            background-color: rgba($color: $colorDark, $alpha: 0.3);
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            .form {
+                background-color: white;
+                width: 600px;
+                min-height: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 30px;
+                overflow: auto;
+                padding-bottom: 60px;
+
+                input,
+                textarea,
+                select {
+                    outline: none;
+                }
+
+                h2 {
+                    font-size: 28px;
+                    font-weight: 500;
+                    margin-top: 50px;
+                    text-align: center;
+                    line-height: 36px;
+                    margin-bottom: 12px;
+                }
+
+                p {
+                    width: 450px;
+                    text-align: center;
+                    line-height: 24px;
+                    margin-bottom: 30px;
+                    font-size: 14px;
+                }
+
+
+                .form-biodata {
+                    width: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .row {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+
+                        .col-6 {
+                            width: 49%;
+                        }
+
+                        .col-12 {
+                            width: 100%;
+                        }
+
+                        .form-group {
+                            display: flex;
+                            flex-direction: column;
+
+                            .box-profile {
+
+                                .imgProfile {
+                                    width: 0.1px;
+                                    height: 0.1px;
+                                    opacity: 0;
+                                    overflow: hidden;
+                                    position: absolute;
+                                    z-index: -1;
+                                }
+
+                                .lblImgProfile {
+                                    width: 100%;
+                                    height: 100px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border: 1px solid $colorGray;
+                                    border-radius: 20px;
+                                    background-color: rgba($color: $colorDark, $alpha: 0.01);
+                                }
+                            }
+
+                            label {
+                                margin-bottom: 10px;
+                                font-size: 14px;
+                            }
+
+                            input {
+                                height: 40px;
+                                border-radius: 20px;
+                                border: 1px solid $colorGray;
+                                padding-left: 20px;
+                                padding-right: 20px;
+                            }
+
+                            select {
+                                height: 44px;
+                                border: 1px solid $colorGray;
+                                border-radius: 20px;
+                                padding-left: 20px;
+                                padding-right: 20px;
+                            }
+
+                            textarea {
+                                border: 1px solid $colorGray;
+                                border-radius: 20px;
+                                padding: 10px 20px 10px 20px;
+                            }
+
+                            input:focus {
+                                border: 1px solid $colorOrange;
+                            }
+
+                            select:focus {
+                                border: 1px solid $colorOrange;
+                            }
+
+                            textarea:focus {
+                                border: 1px solid $colorOrange;
+                            }
+
+                        }
+                    }
+
+                    .btn {
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    button {
+                        margin-left: 5px;
+                        margin-right: 5px;
+                        margin-top: 10px;
+                        height: 45px;
+                        width: 200px;
+                        border-radius: 30px;
+                        color: white;
+                        cursor: pointer;
+                        font-weight: 500;
+                    }
+
+                    .btn-submit {
+                        border: 2px solid $colorOrange;
+                        background-color: $colorOrange;
+                    }
+
+                    .btn-cancel {
+                        border: 2px solid $colorLight;
+                        background-color: $colorLight;
+                        color: $colorDark;
+                    }
+
+                }
+            }
         }
 
         .filter {
@@ -676,7 +849,7 @@
                     display: flex;
                     justify-content: center;
                     padding-bottom: 80px;
-        
+
                     .content {
                         width: 100%;
                         position: relative;
@@ -684,7 +857,7 @@
                         justify-content: center;
                         min-height: 500px;
                         // align-items: center;
-        
+
                         .form-box {
                             position: relative;
                             z-index: 1;
@@ -699,7 +872,7 @@
                             align-items: center;
                             padding-top: 40px;
                             padding-bottom: 40px;
-        
+
                             h2 {
                                 font-size: 28px;
                                 font-weight: 500;
@@ -708,40 +881,40 @@
                                 line-height: 36px;
                                 margin-bottom: 15px;
                             }
-        
+
                             p {
                                 width: 650px;
                                 text-align: center;
                                 line-height: 24px;
                                 margin-bottom: 30px;
                             }
-        
+
                             .form-biodata {
                                 width: 80%;
                                 display: flex;
                                 flex-direction: column;
                                 align-items: center;
-        
+
                                 .row {
                                     width: 100%;
                                     display: flex;
                                     justify-content: space-between;
                                     margin-bottom: 20px;
-        
+
                                     .col-6 {
                                         width: 49%;
                                     }
-        
+
                                     .col-12 {
                                         width: 100%;
                                     }
-        
+
                                     .form-group {
                                         display: flex;
                                         flex-direction: column;
-        
+
                                         .box-profile {
-        
+
                                             .imgProfile {
                                                 width: 0.1px;
                                                 height: 0.1px;
@@ -750,7 +923,7 @@
                                                 position: absolute;
                                                 z-index: -1;
                                             }
-        
+
                                             .lblImgProfile {
                                                 width: 100%;
                                                 height: 100px;
@@ -762,12 +935,12 @@
                                                 background-color: rgba($color: $colorDark, $alpha: 0.01);
                                             }
                                         }
-        
+
                                         label {
                                             margin-bottom: 10px;
                                             font-size: 14px;
                                         }
-        
+
                                         input {
                                             height: 40px;
                                             border-radius: 20px;
@@ -775,7 +948,7 @@
                                             padding-left: 20px;
                                             padding-right: 20px;
                                         }
-        
+
                                         select {
                                             height: 44px;
                                             border: 1px solid $colorGray;
@@ -783,28 +956,28 @@
                                             padding-left: 20px;
                                             padding-right: 20px;
                                         }
-        
+
                                         textarea {
                                             border: 1px solid $colorGray;
                                             border-radius: 20px;
                                             padding: 10px 20px 10px 20px;
                                         }
-        
+
                                         input:focus {
                                             border: 1px solid $colorOrange;
                                         }
-        
+
                                         select:focus {
                                             border: 1px solid $colorOrange;
                                         }
-        
+
                                         textarea:focus {
                                             border: 1px solid $colorOrange;
                                         }
-        
+
                                     }
                                 }
-        
+
                                 button {
                                     margin-top: 20px;
                                     height: 45px;
@@ -814,10 +987,10 @@
                                     background-color: $colorOrange;
                                     color: white;
                                 }
-        
+
                             }
                         }
-        
+
                     }
                 }
             }
@@ -1025,119 +1198,94 @@
                 display: flex;
                 justify-content: center;
                 padding-bottom: 80px;
-    
+
                 .content {
                     width: 100%;
                     position: relative;
                     display: flex;
                     justify-content: center;
-    
-                    .table {
+
+                    .table-build {
                         width: 100%;
-                        min-height: 200px;
+                        min-height: 100px;
                         display: flex;
                         background-color: white;
                         box-shadow: 0px 30px 60px rgba($color: $colorDark, $alpha: 0.1);
                         border-radius: 20px;
-                        justify-content: center;
+                        // justify-content: center;
                         padding-top: 40px;
                         padding-bottom: 40px;
-    
-                        table {
-                            width: 90%;
+                        overflow: auto;
+            
+                        .table {
                             display: flex;
                             flex-direction: column;
-    
-                            thead {
+                            margin-left: 5%;
+                            padding-right: 5%;
+
+                            .table-head {
                                 display: flex;
-                                width: 100%;
-                                justify-content: space-between;
+                                font-size: 14px;
                                 margin-bottom: 30px;
-    
-                                tr {
-                                    width: 100%;
-                                    display: flex;
-                                    justify-content: space-between;
-    
-                                    .rank {
-                                        width: 3%;
-                                    }
-    
-                                    th {
-                                        width: 24%;
-                                        text-align: left;
-                                        font-weight: 500;
-                                    }
-    
-                                    .skor {
-                                        width: 20%;
-                                    }
+
+                                .th {
+                                    width: 200px;
+                                    font-weight: 500;
+                                    margin-right: 5px;
+                                }
+
+                                .th.small {
+                                    width: 100px;
                                 }
                             }
-    
-                            tbody {
+
+                            .table-body {
                                 display: flex;
                                 flex-direction: column;
-                                width: 100%;
-    
-                                tr {
-                                    width: 100%;
+
+                                .row {
                                     display: flex;
-                                    margin-bottom: 20px;
-                                    justify-content: space-between;
-                                    padding-top: 20px;
-                                    border-top: 1px solid rgba($color: $colorDark, $alpha: 0.1);
-    
-                                    th {
-                                        width: 4%;
-                                        text-align: left;
+                                    align-items: center;
+                                    min-height: 40px;
+                                    border-top: 1px solid rgba($color: $colorDark, $alpha: 0.2);
+
+                                    .td {
+                                        width: 200px;
                                         font-weight: 500;
-                                    }
-    
-                                    td {
-                                        width: 24%;
-                                        text-align: left;
                                         font-weight: 400;
-    
-                                        img {
-                                            width: 80px;
-                                        }
-                                    }
-    
-                                    .skor {
-                                        width: 23%;
+                                        margin-right: 5px;
                                         display: flex;
-                                        justify-content: center;
-    
-                                        .badge {
-                                            padding: 0px 10px 0px 10px;
-                                            border-radius: 5px;
-                                            text-decoration: none;
-                                            color: white;
-                                            font-size: 14px;
-                                            margin-left: 2px;
-                                            margin-right: 2px;
-                                            height: 30px;
-                                            display: flex;
-                                            align-items: center;
-                                        }
-    
-                                        .badge-danger {
-                                            background-color: salmon;
-                                        }
-    
-                                        .badge-warning {
-                                            background-color: orange;
-                                        }
-    
-                                        .badge-primary {
-                                            background-color: $colorOrange;
-                                        }
                                     }
-                                }
     
-                                hr {
-                                    height: 1px;
+                                    .td.small {
+                                        width: 100px;
+                                    }
+
+                                    .badge {
+                                        padding: 0px 10px 0px 10px;
+                                        border-radius: 5px;
+                                        text-decoration: none;
+                                        color: white;
+                                        font-size: 14px;
+                                        margin-left: 2px;
+                                        margin-right: 2px;
+                                        height: 30px;
+                                        display: flex;
+                                        align-items: center;
+                                        cursor: pointer;
+                                    }
+
+                                    .badge-danger {
+                                        background-color: salmon;
+                                    }
+
+                                    .badge-warning {
+                                        background-color: orange;
+                                    }
+
+                                    .badge-primary {
+                                        background-color: $colorOrange;
+                                    }
                                 }
                             }
                         }

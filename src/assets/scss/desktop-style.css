@@ -534,7 +534,8 @@
     left: 20px;
     color: rgba(196, 196, 196, 0.5);
   }
-  .login-page .login .login-left .content form .form-group input, .login-page .login .login-left .content form .form-group select {
+  .login-page .login .login-left .content form .form-group input,
+  .login-page .login .login-left .content form .form-group select {
     width: 100%;
     height: 50px;
     border-radius: 10px;
@@ -617,6 +618,187 @@
     font-weight: 500;
     margin-bottom: 30px;
     margin-top: 30px;
+  }
+  .dashboard .modal.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .dashboard .modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(57, 57, 57, 0.3);
+    display: none;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .dashboard .modal .form {
+    background-color: white;
+    width: 600px;
+    min-height: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 30px;
+    overflow: auto;
+    padding-bottom: 60px;
+  }
+  .dashboard .modal .form input,
+  .dashboard .modal .form textarea,
+  .dashboard .modal .form select {
+    outline: none;
+  }
+  .dashboard .modal .form h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 50px;
+    text-align: center;
+    line-height: 36px;
+    margin-bottom: 12px;
+  }
+  .dashboard .modal .form p {
+    width: 450px;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  .dashboard .modal .form .form-biodata {
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .dashboard .modal .form .form-biodata .row {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .dashboard .modal .form .form-biodata .row .col-6 {
+    width: 49%;
+  }
+  .dashboard .modal .form .form-biodata .row .col-12 {
+    width: 100%;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group .box-profile .imgProfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group .box-profile .lblImgProfile {
+    width: 100%;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    background-color: rgba(57, 57, 57, 0.01);
+  }
+  .dashboard .modal .form .form-biodata .row .form-group label {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group input {
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #C4C4C4;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group select {
+    height: 44px;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group textarea {
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group input:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group select:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .modal .form .form-biodata .row .form-group textarea:focus {
+    border: 1px solid #ff7a57;
+  }
+  .dashboard .modal .form .form-biodata .btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .dashboard .modal .form .form-biodata button {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    height: 45px;
+    width: 200px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .dashboard .modal .form .form-biodata .btn-submit {
+    border: 2px solid #ff7a57;
+    background-color: #ff7a57;
+  }
+  .dashboard .modal .form .form-biodata .btn-cancel {
+    border: 2px solid #ECF0F3;
+    background-color: #ECF0F3;
+    color: #393939;
   }
   .dashboard .filter {
     margin-bottom: 30px;
@@ -1089,9 +1271,9 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .dashboard .card-assignment-detail .table-section .content .table {
+  .dashboard .card-assignment-detail .table-section .content .table-build {
     width: 100%;
-    min-height: 200px;
+    min-height: 100px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1099,14 +1281,11 @@
     -webkit-box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
             box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
     border-radius: 20px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     padding-top: 40px;
     padding-bottom: 40px;
+    overflow: auto;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table {
-    width: 90%;
+  .dashboard .card-assignment-detail .table-section .content .table-build .table {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1114,38 +1293,25 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin-left: 5%;
+    padding-right: 5%;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table thead {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-head {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    font-size: 14px;
     margin-bottom: 30px;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table thead tr {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table thead tr .rank {
-    width: 3%;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table thead tr th {
-    width: 24%;
-    text-align: left;
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-head .th {
+    width: 200px;
     font-weight: 500;
+    margin-right: 5px;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table thead tr .skor {
-    width: 20%;
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-head .th.small {
+    width: 100px;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1153,43 +1319,30 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: 100%;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr {
-    width: 100%;
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 20px;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid rgba(57, 57, 57, 0.1);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-height: 40px;
+    border-top: 1px solid rgba(57, 57, 57, 0.2);
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr th {
-    width: 4%;
-    text-align: left;
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .td {
+    width: 200px;
     font-weight: 500;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr td {
-    width: 24%;
-    text-align: left;
     font-weight: 400;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr td img {
-    width: 80px;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor {
-    width: 23%;
+    margin-right: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .td.small {
+    width: 100px;
+  }
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .badge {
     padding: 0px 10px 0px 10px;
     border-radius: 5px;
     text-decoration: none;
@@ -1204,18 +1357,16 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    cursor: pointer;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-danger {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .badge-danger {
     background-color: salmon;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-warning {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .badge-warning {
     background-color: orange;
   }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody tr .skor .badge-primary {
+  .dashboard .card-assignment-detail .table-section .content .table-build .table .table-body .row .badge-primary {
     background-color: #ff7a57;
-  }
-  .dashboard .card-assignment-detail .table-section .content .table table tbody hr {
-    height: 1px;
   }
   .dashboard .card-assignment-detail.active {
     width: 70%;

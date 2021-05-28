@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import axios from 'axios';
 import { UserContext } from "../../pages/userContext";
 import { useHistory } from "react-router";
+import animation1 from '../../assets/images/animation-1.png';
 
 export function Register() {
 
@@ -92,7 +93,7 @@ export function Register() {
                 </div>
             </div>
             <div className="login-right">
-                <img src="./assets/images/animation-1.png" alt="" />
+                <img src={animation1} alt="" />
                 <h2>Designed for Learn Table</h2>
                 <p>Lorem ipsum dolor sit amet. Incidunt debitis magnam, culpa a reiciendis molestiae laudantium facilis.</p>
             </div>
