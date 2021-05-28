@@ -678,6 +678,9 @@
     margin-bottom: 30px;
     font-size: 14px;
   }
+  .dashboard .modal .form p span {
+    color: #ff7a57;
+  }
   .dashboard .modal .form .form-biodata {
     width: 80%;
     display: -webkit-box;
@@ -762,6 +765,7 @@
     border: 1px solid #C4C4C4;
     border-radius: 20px;
     padding: 10px 20px 10px 20px;
+    font-family: "Poppins";
   }
   .dashboard .modal .form .form-biodata .row .form-group input:focus {
     border: 1px solid #ff7a57;
@@ -859,6 +863,7 @@
   .dashboard .action form .row .form-group textarea {
     border: 1px solid #C4C4C4;
     border-radius: 20px;
+    font-family: "Poppins";
     padding: 10px 20px 10px 20px;
   }
   .dashboard .action form .row .form-group input:focus {
@@ -1032,6 +1037,7 @@
     border: 1px solid #C4C4C4;
     border-radius: 20px;
     padding: 10px 20px 10px 20px;
+    font-family: "Poppins";
   }
   .dashboard .bg-model .box-model .form-section .content .form-box .form-biodata .row .form-group input:focus {
     border: 1px solid #ff7a57;
@@ -1631,6 +1637,7 @@
   .profile .form-section .content .form-box .form-biodata .row .form-group textarea {
     border: 1px solid #C4C4C4;
     border-radius: 20px;
+    font-family: "Poppins";
     padding: 10px 20px 10px 20px;
   }
   .profile .form-section .content .form-box .form-biodata .row .form-group input:focus {

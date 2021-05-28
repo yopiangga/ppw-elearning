@@ -17,15 +17,18 @@ export function MyClass() {
         document.title = "Class | E-learning";
         setMenuActive("myClass");
 
+        reqClass();
+    }, [])
+
+    const reqClass = () => {
         axios.post(`${url.api}myClass/read-myClass.php`, { idUser: userLogin.id }).then(
             (res) => {
-                // console.log(res);
                 setMyClass(res.data.data);
             }
         ).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }
 
     const handleChangeCode = (event) => {
         setEnroll({
@@ -43,6 +46,8 @@ export function MyClass() {
         ).catch((err) => {
             console.log(err);
         })
+        
+        reqClass();
     }
 
     return (

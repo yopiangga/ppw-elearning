@@ -13,9 +13,9 @@ export function Assignment() {
 
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin, createAssignment, setCreateAssignment] = useContext(UserContext);
 
-    const [assignment, setAssignment] = useState([{ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" }])
+    const [assignment, setAssignment] = useState([{ id: "", title: "", classId: "", className: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" }])
     const [assignmentNumber, setAssignmentNumber] = useState(0);
-    const [assignmentDetail, setAssignmentDetail] = useState({ title: "", classId: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" });
+    const [assignmentDetail, setAssignmentDetail] = useState({ id: "", title: "", classId: "", className: "", description: "", minRate: "", maxRate: "", dueTime: "", dueDate: "" });
     const [collectAss, setCollectAss] = useState([{
         idCollect: "",
         idStudent: "",
@@ -134,6 +134,11 @@ export function Assignment() {
           );
     }
 
+    const handleEditAssignment = () => {
+        localStorage.setItem('CollectDetail', JSON.stringify(assignmentDetail));
+        history.push('/edit-assignment');
+    }
+
     return (
         <div className="dashboard">
 
@@ -190,7 +195,7 @@ export function Assignment() {
                             <div className="title">
                                 <h2>{assignmentDetail.title}</h2>
                                 <div className="information">
-                                    <h5>{assignmentDetail.classId}</h5>
+                                    <h5>{assignmentDetail.className}</h5>
                                     <h6>{assignmentDetail.dueTime} {assignmentDetail.dueDate}</h6>
                                 </div>
                             </div>
@@ -204,7 +209,7 @@ export function Assignment() {
                         </div>
                         <div className="card-action">
                             <form>
-                                <button>Edit Assignment</button>
+                                <button onClick={() => handleEditAssignment()}>Edit Assignment</button>
                             </form>
                         </div>
                     </div>
@@ -240,7 +245,7 @@ export function Assignment() {
                                             (collectAss != null) ? 
                                             collectAss.map(function (el, idx) {
                                                 return (
-                                                    <div className="row">
+                                                    <div className="row" key={idx}>
                                                         <div className="td small">{idx + 1}</div>
                                                         <div className="td">{el.idStudent}</div>
                                                         <div className="td">{el.name}</div>

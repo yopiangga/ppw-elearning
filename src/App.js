@@ -27,6 +27,7 @@ import { Assignment } from "./component/assignment/Assignment";
 import { Register } from "./component/auth/Register";
 import { Class } from "./component/class/Class";
 import { CreateAssignment } from "./component/assignment/CreateAssignment";
+import { EditAssignment } from "./component/assignment/EditAssignment";
 
 function App() {
 
@@ -67,7 +68,7 @@ function App() {
             <Navbar />
             <div className="body-content" onClick={handleSidebar}>
               <Switch>
-                <Route path="/dashboard" exact>
+                <Route path="/" exact>
                   <Dashboard />
                 </Route>
                 <Route path="/my-class" exact>
@@ -84,6 +85,9 @@ function App() {
                 </Route>
                 <Route path="/create-assignment" exact>
                   <CreateAssignment />
+                </Route>
+                <Route path="/edit-assignment" exact>
+                  <EditAssignment />
                 </Route>
                 <Route path="/my-profile" exact>
                   <Profile />

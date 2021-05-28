@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useContext, useEffect } from 'react';
-import { FaBookReader, FaLongArrowAltRight } from 'react-icons/fa';
+import { FaBookReader, FaLongArrowAltRight, FaRegTrashAlt } from 'react-icons/fa';
 import { UserContext } from '../../pages/userContext';
 import axios from 'axios';
 import $, { data } from 'jquery';
@@ -9,15 +9,18 @@ import $, { data } from 'jquery';
 export function Class() {
 
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
-
     const [createClass, setCreateClass] = useState({ nameClass: "", id: userLogin.id });
-
     const [allClass, setAllClass] = useState([{ id: "", code: "", name: "", id_lecturer: "", lecturer: "" }])
+    const [classDel, setClassDel] = useState({id: 0, idx: 0});
 
     useEffect(() => {
         document.title = "Class | E-learning";
         setMenuActive("class");
 
+        readClass();
+    }, [])
+
+    const readClass = () => {
         axios.post(`${url.api}class/read-class.php`, { idUser: userLogin.id }).then(
             (res) => {
                 setAllClass(res.data.data);
@@ -25,7 +28,7 @@ export function Class() {
         ).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }
 
     const handleChange = (event) => {
         setCreateClass({ ...createClass, [event.target.name]: event.target.value })
@@ -35,15 +38,12 @@ export function Class() {
         event.preventDefault();
         axios.post(`${url.api}class/create-class.php`, createClass).then(
             (res) => {
-                console.log(res);
-                // (res.data.msg == "Login Success!") ? 
-                //     successCreate()
-                //  :
-                //     failedCreate()
+                // console.log(res);
             }
         ).catch((err) => {
             console.log(err);
         })
+        readClass();
     }
 
     const successCreate = () => {
@@ -54,8 +54,51 @@ export function Class() {
 
     }
 
+    const handleClick = (id, idx) => {
+        document.querySelector('.modal').classList.add('active');
+        setClassDel({
+            id: id,
+            idx: idx
+        });
+    }
+
+    const handleCancel = (event) => {
+        document.querySelector('.modal').classList.remove('active');
+        setClassDel({
+            id: 0,
+            idx: 0
+        });
+    }
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+        axios.post(`${url.api}class/delete-class.php`, {idClass: classDel.id}).then(
+            (res) => {
+                console.log(res);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+
+        readClass();
+        document.querySelector('.modal').classList.remove('active');
+    }
+
     return (
         <div className="dashboard">
+            <div className="modal">
+                <div className="form">
+                    <h2>Warning!</h2>
+                    <p>Do you want to delete <span>{allClass[classDel.idx].name}</span> class ? </p>
+                    <form className="form-biodata" method="POST">
+                        <div className="btn">
+                            <button className="btn-cancel" name="cancel" type="button" onClick={handleCancel}>CANCEL</button>
+                            <button className="btn-submit" name="submit" type="submit" onClick={handleDelete}>DELETE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <h2>Create Class</h2>
             <div className="action">
                 <form onSubmit={handleCreateClass} method="POST">
@@ -97,12 +140,12 @@ export function Class() {
                         (allClass != null) ? 
                         allClass.map(function (el, idx) {
                             return (
-                                <div className="shadow" key={idx}>
+                                <div className="shadow" key={idx} onClick={()=>handleClick(el.id, idx)}>
                                     <div className="card">
                                         <div className="card-head">
                                             <div className="circle">{idx+1}</div>
                                             <div className="icon">
-                                                <FaLongArrowAltRight />
+                                                <FaRegTrashAlt />
                                             </div>
                                         </div>
                                         <div className="card-body">

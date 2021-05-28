@@ -626,6 +626,10 @@
                     line-height: 24px;
                     margin-bottom: 30px;
                     font-size: 14px;
+
+                    span {
+                        color: $colorOrange;
+                    }
                 }
 
 
@@ -701,6 +705,7 @@
                                 border: 1px solid $colorGray;
                                 border-radius: 20px;
                                 padding: 10px 20px 10px 20px;
+                                font-family: $fontPrimary;
                             }
 
                             input:focus {
@@ -804,6 +809,7 @@
                         textarea {
                             border: 1px solid $colorGray;
                             border-radius: 20px;
+                            font-family: $fontPrimary;
                             padding: 10px 20px 10px 20px;
                         }
 
@@ -961,6 +967,8 @@
                                             border: 1px solid $colorGray;
                                             border-radius: 20px;
                                             padding: 10px 20px 10px 20px;
+                                            font-family: $fontPrimary;
+
                                         }
 
                                         input:focus {
@@ -1529,6 +1537,7 @@
                                 textarea {
                                     border: 1px solid $colorGray;
                                     border-radius: 20px;
+                                    font-family: $fontPrimary;
                                     padding: 10px 20px 10px 20px;
                                 }
 

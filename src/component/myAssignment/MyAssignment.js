@@ -52,7 +52,7 @@ export function MyAssignment() {
             (res) => {
                 setAss(res.data.data);
                 setCollect(res.data.collect);
-                console.log(res.data);
+                console.log(res);
             }
         ).catch((err) => {
             console.log(err);
@@ -112,13 +112,15 @@ export function MyAssignment() {
 
     const checkStatus = (id) => {
         var i;
-
-        for (i = 0; i < collect.length; i++) {
-            if (collect[i].idAssignment == id)
-                return (collect[i].createAt);
-            else
-                return (0);
+        if (collect != null) {
+            for (i = 0; i < collect.length; i++) {
+                if (collect[i].idAssignment == id)
+                    return (collect[i].createAt);
+                else
+                    return (0);
+            }
         }
+
     }
 
     const checkNilai = (id) => {
@@ -210,32 +212,32 @@ export function MyAssignment() {
                 <div className="card-group">
 
                     {
-                        (ass != null) ? 
-                        ass.map(function (el, idx) {
-                            return (
-                                <div className="shadow" key={idx}>
-                                    <div className="card">
-                                        <div className="card-head">
-                                            <div className="circle">{idx + 1}</div>
-                                            <div className="icon" onClick={() => handleClick(idx)}>
-                                                <FaLongArrowAltRight />
+                        (ass != null) ?
+                            ass.map(function (el, idx) {
+                                return (
+                                    <div className="shadow" key={idx}>
+                                        <div className="card">
+                                            <div className="card-head">
+                                                <div className="circle">{idx + 1}</div>
+                                                <div className="icon" onClick={() => handleClick(idx)}>
+                                                    <FaLongArrowAltRight />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="card-body">
-                                            <div className="left">
-                                                <h4>{el.title}</h4>
-                                                <h5>{el.className} <span>{el.dueDate}</span></h5>
-                                            </div>
-                                            <div className="right" style={{ display: 'none' }}>
-                                                <h4></h4>
+                                            <div className="card-body">
+                                                <div className="left">
+                                                    <h4>{el.title}</h4>
+                                                    <h5>{el.className} <span>{el.dueDate}</span></h5>
+                                                </div>
+                                                <div className="right" style={{ display: 'none' }}>
+                                                    <h4></h4>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                        :
-                        <div></div>
+                                )
+                            })
+                            :
+                            <div></div>
                     }
 
                 </div>
