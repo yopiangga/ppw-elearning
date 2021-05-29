@@ -637,7 +637,7 @@
     width: 100%;
   }
   .dashboard h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -690,11 +690,11 @@
     outline: none;
   }
   .dashboard .modal .form h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     margin-top: 50px;
     text-align: center;
-    line-height: 36px;
+    line-height: 28px;
     margin-bottom: 12px;
   }
   .dashboard .modal .form p {
@@ -970,11 +970,11 @@
     padding-bottom: 40px;
   }
   .dashboard .bg-model .box-model .form-section .content .form-box h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     margin-top: 0px;
     text-align: center;
-    line-height: 36px;
+    line-height: 28px;
     margin-bottom: 15px;
   }
   .dashboard .bg-model .box-model .form-section .content .form-box p {
@@ -1623,11 +1623,11 @@
     background-color: white;
   }
   .profile .form-section .content .form-box h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     margin-top: 0px;
     text-align: center;
-    line-height: 36px;
+    line-height: 28px;
     margin-bottom: 15px;
   }
   .profile .form-section .content .form-box p {
