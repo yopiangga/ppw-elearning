@@ -5,19 +5,25 @@ import { FaBookReader, FaLongArrowAltRight, FaRegTrashAlt } from 'react-icons/fa
 import { UserContext } from '../../pages/userContext';
 import axios from 'axios';
 import $, { data } from 'jquery';
+import { useHistory } from 'react-router';
 
 export function Class() {
 
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
-    const [createClass, setCreateClass] = useState({ nameClass: "", id: userLogin.id });
+    const [createClass, setCreateClass] = useState({ nameClass: "", id: ""});
     const [allClass, setAllClass] = useState([{ id: "", code: "", name: "", id_lecturer: "", lecturer: "" }])
     const [classDel, setClassDel] = useState({id: 0, idx: 0});
+    const history = useHistory();
 
     useEffect(() => {
         document.title = "Class | E-learning";
         setMenuActive("class");
 
-        readClass();
+        if(userLogin == null)
+            history.push('/login');
+        else {
+            readClass();
+        }
     }, [])
 
     const readClass = () => {
@@ -36,7 +42,7 @@ export function Class() {
 
     const handleCreateClass = (event) => {
         event.preventDefault();
-        axios.post(`${url.api}class/create-class.php`, createClass).then(
+        axios.post(`${url.api}class/create-class.php`, {nameClass: createClass.nameClass, id: userLogin.id}).then(
             (res) => {
                 // console.log(res);
             }

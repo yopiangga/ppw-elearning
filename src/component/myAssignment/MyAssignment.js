@@ -7,6 +7,7 @@ import axios from 'axios';
 import $, { data } from 'jquery';
 
 import example from './../../assets/images/example.jpg';
+import { useHistory } from 'react-router';
 
 export function MyAssignment() {
 
@@ -44,19 +45,24 @@ export function MyAssignment() {
         idStudent: ""
     }]);
 
+    const history = useHistory();
+
     useEffect(() => {
         document.title = "Assignment | E-learning";
         setMenuActive("myAssignment");
 
-        axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
-            (res) => {
-                setAss(res.data.data);
-                setCollect(res.data.collect);
-                console.log(res);
-            }
-        ).catch((err) => {
-            console.log(err);
-        })
+        if(userLogin == null)
+            history.push('/login');
+        else {
+            axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
+                (res) => {
+                    setAss(res.data.data);
+                    setCollect(res.data.collect);
+                }
+            ).catch((err) => {
+                console.log(err);
+            })
+        }
     }, [])
 
     const handleClick = (idx) => {

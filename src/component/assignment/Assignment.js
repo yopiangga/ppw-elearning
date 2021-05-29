@@ -31,13 +31,17 @@ export function Assignment() {
         document.title = "Assignment | E-learning";
         setMenuActive("assignment");
 
-        axios.post(`${url.api}assignment/read-assignment.php`, { idUser: userLogin.id }).then(
-            (res) => {
-                setAssignment(res.data.data);
-            }
-        ).catch((err) => {
-            console.log(err);
-        })
+        if(userLogin == null)
+            history.push('/login');
+        else  {
+            axios.post(`${url.api}assignment/read-assignment.php`, { idUser: userLogin.id }).then(
+                (res) => {
+                    setAssignment(res.data.data);
+                }
+            ).catch((err) => {
+                console.log(err);
+            })
+        }
 
     }, [])
 

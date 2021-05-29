@@ -272,7 +272,6 @@
             clip-path: polygon(220px 0, 235px 20px, 205px 20px);
   }
   .App .body .navbar .notifikasi .body-box {
-    min-height: 180px;
     width: 250px;
     background-color: white;
     border-radius: 15px;
@@ -315,7 +314,7 @@
         -ms-flex-align: center;
             align-items: center;
     position: relative;
-    height: 100px;
+    height: 120px;
   }
   .App .body .navbar .notifikasi .body-box .notifikasi-body .item {
     width: 90%;
@@ -352,12 +351,14 @@
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 5px;
+    line-height: 24px;
   }
   .App .body .navbar .notifikasi .body-box .notifikasi-body .item .item-right h4 {
     font-weight: 500;
     color: #ff7a57;
   }
   .App .body .navbar .notifikasi .body-box .notifikasi-body .notifikasi-close {
+    height: 45px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -397,7 +398,7 @@
   .App .body .navbar .notifikasi.active {
     -webkit-transition: 300ms;
     transition: 300ms;
-    height: 200px;
+    height: 220px;
   }
   .App .body .body-content {
     margin-top: 80px;

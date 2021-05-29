@@ -5,6 +5,7 @@ import { FaBookReader, FaLongArrowAltRight } from 'react-icons/fa';
 import { UserContext } from '../../pages/userContext';
 import axios from 'axios';
 import $, { data } from 'jquery';
+import { useHistory } from 'react-router';
 
 export function MyClass() {
 
@@ -12,12 +13,16 @@ export function MyClass() {
 
     const [enroll, setEnroll] = useState({ codeClass: "" });
     const [myClass, setMyClass] = useState([{ id: "", code: "", name: "", nameLecturer: "" }]);
+    const history = useHistory();
 
     useEffect(() => {
         document.title = "Class | E-learning";
         setMenuActive("myClass");
 
-        reqClass();
+        if(userLogin == null)
+            history.push('/login');
+        else 
+            reqClass();
     }, [])
 
     const reqClass = () => {

@@ -1,22 +1,29 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { UserContext } from '../../pages/userContext';
 
 export function Profile() {
     const [menuActive, setMenuActive, url, setUrl, userLogin, setUserLogin] = useContext(UserContext);
     
     const [user, setUser] = useState({email: "", telp: "", password1: "", password2: "", fullName: "", nickName: "", university: "", fields: "", placeBirth: "", dateBirth: "", gender: "", zipCode: "", address: ""});
+    const history = useHistory();
 
     useEffect(() => {
         document.title = "My Profile | E-learning";
         setMenuActive("myProfile");
-        axios.post(`${url.api}profile/read-profile.php`, { idUser: userLogin.id , status: userLogin.status}).then(
-            (res) => {
-                setUser(res.data.data[0]);
-            }
-        ).catch((err) => {
-            console.log(err);
-        })
+
+        if(userLogin == null)
+            history.push('/login');
+        else {
+            axios.post(`${url.api}profile/read-profile.php`, { idUser: userLogin.id , status: userLogin.status}).then(
+                (res) => {
+                    setUser(res.data.data[0]);
+                }
+            ).catch((err) => {
+                console.log(err);
+            })
+        }
     }, [])
 
     const handleChange = (event) => {

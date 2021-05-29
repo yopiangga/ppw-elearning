@@ -11,13 +11,18 @@ export function EditAssignment() {
     useEffect(() => {
         document.title = "Create Assignment | E-learning";
         setMenuActive("assignment");
-        axios.post(`${url.api}class/read-class.php`, { idUser: userLogin.id }).then(
-            (res) => {
-                setMyClass(res.data.data);
-            }
-        ).catch((err) => {
-            console.log(err);
-        })
+
+        if(userLogin == null)
+            history.push('/login');
+        else {
+            axios.post(`${url.api}class/read-class.php`, { idUser: userLogin.id }).then(
+                (res) => {
+                    setMyClass(res.data.data);
+                }
+            ).catch((err) => {
+                console.log(err);
+            })
+        }
 
         setAssignmentDetail(JSON.parse(localStorage.getItem('CollectDetail')));
     }, [])
