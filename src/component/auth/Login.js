@@ -12,13 +12,8 @@ export function Login() {
 
     const history = useHistory();
 
-    // useEffect(() => {
-    //     document.querySelector('.App').classList.add('hidden');
-    // })
-
     const handleChange = (event) => {
         setUser({...user, [event.target.name] : event.target.value});
-        // console.log(user);
     }
 
     const handleRegister = () => {
@@ -27,10 +22,8 @@ export function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(user);
         axios.post(`${url.api}auth/login.php`, user).then(
             (res) => {
-                console.log(res);
                 (res.data.msg == "Login Success!") ? 
                 successLogin(res.data.data[0])
                  :
@@ -46,11 +39,10 @@ export function Login() {
         localStorage.setItem('userLogin', JSON.stringify(data));
         setUserLogin(data);
         document.location.href = "/";
-        // history.push('/');
     }
 
     const failedLogin = () => {
-        setUser({email: "", password: "", status: ""})
+        setUser({email: "", password: "", status: user.status})
         history.push('/login');
     }
 
@@ -83,7 +75,7 @@ export function Login() {
                         <div className="form-group">
                             <label>Status</label>
                             <i className="fa fa-user"></i>
-                            <select name="status" id="" onChange={handleChange}>
+                            <select name="status" id="" onChange={handleChange} value={user.status}>
                                 <option disabled>Choose Status</option>
                                 <option value="3">Student</option>
                                 <option value="2">Lecturer</option>
