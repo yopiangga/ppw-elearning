@@ -50,7 +50,8 @@ export default function Navbar() {
             <h1>{titlePage.first} <span>{titlePage.last}</span></h1>
             {
                 (userLogin != null) ?
-                    <div className="icon" onClick={handleNotifikasi} style={(userLogin.status == 2) ? { display: 'none' } : { display: 'flex' }}>
+                    <div className="icon" onClick={handleNotifikasi} >
+                    {/* <div className="icon" onClick={handleNotifikasi} style={(userLogin.status != '2' || userLogin.status != '3') ? { display: 'none' } : { display: 'flex' }}> */}
                         <div className="icon-bell">
                             <FaRegBell />
                             <div className="circle" style={(assDoing == null || assDoing == 0) ? { display: 'none' } : { display: 'flex' }}>{assDoing.length}</div>

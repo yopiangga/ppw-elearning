@@ -275,6 +275,8 @@
     width: 250px;
     background-color: white;
     border-radius: 15px;
+    -webkit-box-shadow: 8px 3px 8px rgba(57, 57, 57, 0.08);
+            box-shadow: 8px 3px 8px rgba(57, 57, 57, 0.08);
   }
   .App .body .navbar .notifikasi .body-box .notifikasi-head {
     display: -webkit-box;
