@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import loading from './assets/images/image-loading.svg';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <div className="bg-loading">
+      <img className="img-loading" src={loading} />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

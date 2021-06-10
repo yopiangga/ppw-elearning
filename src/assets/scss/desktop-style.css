@@ -29,6 +29,31 @@
   select:focus {
     outline: none;
   }
+  .bg-loading {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+  .bg-loading img {
+    background-color: none;
+    width: 200px;
+    height: 200px;
+  }
+  .bg-loading.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .App {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1138,7 +1163,13 @@
     opacity: 0.9;
     margin-right: 20px;
   }
-  .dashboard .card-assignment-detail .card .card-head .title .information span {
+  .dashboard .card-assignment-detail .card .card-head .title .information .badge {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .dashboard .card-assignment-detail .card .card-head .title .information .badge span {
+    margin-right: 5px;
     padding: 3px 5px 3px 5px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1400,7 +1431,7 @@
         flex-wrap: wrap;
   }
   .dashboard .card-group .shadow {
-    margin: 0px 30px 40px 30px;
+    margin: 0px 30px 80px 30px;
     -webkit-box-shadow: 20px -20px 40px white;
             box-shadow: 20px -20px 40px white;
     width: 265px;
@@ -1477,6 +1508,8 @@
     font-weight: 500;
     margin-bottom: 10px;
     line-height: 24px;
+    height: 50px;
+    overflow: hidden;
   }
   .dashboard .card-group .shadow .card .card-body h5 {
     color: #393939;

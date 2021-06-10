@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useContext, useEffect } from 'react';
-import { FaBookReader, FaLongArrowAltRight } from 'react-icons/fa';
+import { FaBookReader, FaCheck, FaLongArrowAltRight } from 'react-icons/fa';
 import { UserContext } from '../../pages/userContext';
 import axios from 'axios';
 import $, { data } from 'jquery';
@@ -54,16 +54,21 @@ export function MyAssignment() {
         if(userLogin == null)
             history.push('/login');
         else {
-            axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
-                (res) => {
-                    setAss(res.data.data);
-                    setCollect(res.data.collect);
-                }
-            ).catch((err) => {
-                console.log(err);
-            })
+            getAssignment();
         }
     }, [])
+
+    const getAssignment = () => {
+        axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
+            (res) => {
+                setAss(res.data.data);
+                // console.log(res);
+                setCollect(res.data.collect);
+            }
+        ).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const handleClick = (idx) => {
         $('#audio').stop();
@@ -74,6 +79,9 @@ export function MyAssignment() {
         setAssDetail(ass[idx]);
     }
 
+    // console.log(assDetail);
+    // console.log(collect);
+
     const handleAssignment = () => {
         $('.card-assignment-detail').removeClass('active');
         $('.card-group').removeClass('nano');
@@ -82,6 +90,7 @@ export function MyAssignment() {
 
     const handleSubmitAssignment = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
         let formData = new FormData();
         formData.append('image', gambar);
 
@@ -105,9 +114,12 @@ export function MyAssignment() {
         }).then(
             (res) => {
                 console.log(res);
+                getAssignment();
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
 
     }
@@ -117,27 +129,31 @@ export function MyAssignment() {
     }
 
     const checkStatus = (id) => {
-        var i;
+        var i, hasil;
         if (collect != null) {
             for (i = 0; i < collect.length; i++) {
-                if (collect[i].idAssignment == id)
-                    return (collect[i].createAt);
-                else
-                    return (0);
+                if (collect[i].idAssignment == id){
+                    hasil = 1;
+                    return(hasil);
+                } else
+                    hasil = 0;
             }
+            return(hasil);
         }
 
     }
 
     const checkNilai = (id) => {
-        var i;
+        var i, hasil;
 
         for (i = 0; i < collect.length; i++) {
-            if (collect[i].idAssignment == id)
-                return (collect[i].rate);
-            else
-                return (0);
+            if (collect[i].idAssignment == id){
+                hasil = collect[i].rate;
+                return(hasil);
+            } else
+                hasil = 0;
         }
+        return(hasil);
     }
 
     return (
@@ -165,8 +181,16 @@ export function MyAssignment() {
                                     <h6>{assDetail.dueTime} {assDetail.dueDate}</h6>
                                     {
                                         (checkStatus(assDetail.id) ?
-                                            <span> Completed
-                                            </span>
+                                            <div className="badge">
+                                                <span> Completed </span>
+                                                {
+                                                    (checkNilai(assDetail.id) < 8/10 * assDetail.maxRate) ? 
+                                                    <span>Remedial</span>
+                                                    :
+                                                    <span>Good</span>
+                                                }
+                                                
+                                            </div>
                                             :
                                             <div></div>
                                         )
@@ -225,8 +249,10 @@ export function MyAssignment() {
                                         <div className="card">
                                             <div className="card-head">
                                                 <div className="circle">{idx + 1}</div>
-                                                <div className="icon" onClick={() => handleClick(idx)}>
-                                                    <FaLongArrowAltRight />
+                                                <div className="icon" onClick={() => handleClick(idx)} style={{color: '#01A765'}}>
+                                                    {
+                                                        checkStatus(el.id) ? <FaCheck /> : <FaLongArrowAltRight />
+                                                    }
                                                 </div>
                                             </div>
                                             <div className="card-body">

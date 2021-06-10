@@ -64,6 +64,7 @@ export function Assignment() {
         axios.post(`${url.api}assignment/collect-assignment.php`, { idUser: userLogin.id, idAss: id }).then(
             (res) => {
                 setCollectAss(res.data.data);
+                console.log(res);
             }
         ).catch((err) => {
             console.log(err);

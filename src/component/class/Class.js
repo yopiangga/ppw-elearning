@@ -60,6 +60,13 @@ export function Class() {
 
     }
 
+    const handleDetail = (id, idx) => {
+        $('#audio').stop();
+        $('.card-assignment-detail').addClass('active');
+        $('.card-group').addClass('nano');
+        $('.circle-book').addClass('active');
+    }
+
     const handleClick = (id, idx) => {
         document.querySelector('.modal').classList.add('active');
         setClassDel({
@@ -122,21 +129,52 @@ export function Class() {
 
             <h2>My Class</h2>
 
-            <div className="card-surat">
+            <div className="card-assignment">
 
-                <div className="card-surat-detail">
-                    <div className="card">
-                        <div className="card-head">
-                            <h2></h2>
-                            <div className="text-arab">
-                                <h1> </h1>
+                <div className="card-assignment-detail">
+                
+                    <div className="table-section">
+                        <div className="content">
+                            <div className="table-build">
+                                <div className="table">
+                                    <div className="table-head">
+                                        <div className="th small">No</div>
+                                        <div className="th">NRP</div>
+                                        <div className="th">Name</div>
+                                        <div className="th">Collection</div>
+                                        <div className="th small">Rate</div>
+                                        <div className="th">Action</div>
+                                    </div>
+
+                                    <div className="table-body">
+
+                                        {/* {
+                                            (collectAss != null) ? 
+                                            collectAss.map(function (el, idx) {
+                                                return (
+                                                    <div className="row" key={idx}>
+                                                        <div className="td small">{idx + 1}</div>
+                                                        <div className="td">{el.idStudent}</div>
+                                                        <div className="td">{el.name}</div>
+                                                        <div className="td">{el.createAt}</div>
+                                                        <div className="td small">{el.rate}</div>
+                                                        <div className="td">
+                                                            <a onClick={() => handleDeleteCollect(el.idCollect)} className="badge badge-danger">Delete</a>
+                                                            <a onClick={() => handleChangeRate(el.idCollect, idx)} className="badge badge-primary">Rate</a>
+                                                            <a onClick={() => handleView(idx)} className="badge badge-primary">View</a>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                            :
+                                            <div></div>
+                                        } */}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="card-body">
-                            <h4> </h4>
-                            <p> </p>
-                        </div>
                     </div>
+
 
                 </div>
 
@@ -146,12 +184,12 @@ export function Class() {
                         (allClass != null) ? 
                         allClass.map(function (el, idx) {
                             return (
-                                <div className="shadow" key={idx} onClick={()=>handleClick(el.id, idx)}>
+                                <div className="shadow" key={idx} onClick={()=>handleDetail(el.id, idx)}>
                                     <div className="card">
                                         <div className="card-head">
                                             <div className="circle">{idx+1}</div>
                                             <div className="icon">
-                                                <FaRegTrashAlt />
+                                                <FaLongArrowAltRight />
                                             </div>
                                         </div>
                                         <div className="card-body">
@@ -171,25 +209,7 @@ export function Class() {
                         <div></div>
                     }
 
-                    {/* <div className="shadow">
-                        <div className="card">
-                            <div className="card-head">
-                                <div className="circle"></div>
-                                <div className="icon">
-                                    <FaLongArrowAltRight />
-                                </div>
-                            </div>
-                            <div className="card-body">
-                                <div className="left">
-                                    <h4></h4>
-                                    <h5></h5>
-                                </div>
-                                <div className="right">
-                                    <h4></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    
 
                 </div>
 
