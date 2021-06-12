@@ -4,7 +4,7 @@ export const UserContext = createContext();
 export const UserProvider = props => {
 
   const [menuActive, setMenuActive] = useState();
-  const [url, setUrl] = useState({ api: `http://172.16.102.54/semester2/ppw/uas/elearning-backend/api/`, baseUrl: `http://172.16.102.54/semester2/ppw/uas/elearning-backend/` });
+  const [url, setUrl] = useState({ api: `https://petikdua.store/elearning-backend/api/`, baseUrl: `https://petikdua.store/elearning-backend/` });
 
   const currentUser = JSON.parse(localStorage.getItem('userLogin'))
   const iniateUser = currentUser ? currentUser : null

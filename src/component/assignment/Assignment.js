@@ -138,10 +138,10 @@ export function Assignment() {
     }
 
     const handleView = (id) => {
-        let url = collectAss[id].file;
+        var link = url.baseUrl + 'file/collectAssignment/' + collectAss[id].file;
 
         window.open(
-            url,
+            link,
             '_blank'
           );
     }

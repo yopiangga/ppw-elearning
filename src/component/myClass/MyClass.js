@@ -30,6 +30,7 @@ export function MyClass() {
     const reqClass = () => {
         axios.post(`${url.api}myClass/read-myClass.php`, { idUser: userLogin.id }).then(
             (res) => {
+                console.log(res);
                 setMyClass(res.data.data);
             }
         ).catch((err) => {

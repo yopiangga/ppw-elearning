@@ -1,4 +1,4 @@
-@media only screen and (min-width: 768px) and ( max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
 
     @font-face {
         font-family: "Poppins";
@@ -50,11 +50,31 @@
         outline: none;
     }
 
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: transparent;
+    }
+
     .bg-loading {
         width: 100%;
         min-height: 100vh;
         background-color: rgba($color: #000000, $alpha: 0.75);
-        display: none;  
+        display: none;
         justify-content: center;
         align-items: center;
         position: fixed;
@@ -154,7 +174,7 @@
                     li:hover {
                         transition: 300ms;
                         background-color: $colorOrange;
-                        
+
                         A {
                             color: white;
 
@@ -163,10 +183,10 @@
                             }
                         }
                     }
-                    
+
                     li.active {
                         background-color: $colorOrange;
-                        
+
                         A {
                             color: white;
 
@@ -241,7 +261,7 @@
                     height: 100%;
                     display: flex;
                     justify-content: center;
-                    
+
                     .icon-bell {
                         width: 30px;
                         height: 100%;
@@ -380,7 +400,7 @@
                                         font-size: 14px;
                                         margin-left: 5px;
                                     }
-    
+
                                     path {
                                         color: $colorOrange;
                                     }
@@ -1293,7 +1313,7 @@
                         padding-top: 40px;
                         padding-bottom: 40px;
                         overflow: auto;
-            
+
                         .table {
                             display: flex;
                             flex-direction: column;
@@ -1333,7 +1353,7 @@
                                         margin-right: 5px;
                                         display: flex;
                                     }
-    
+
                                     .td.small {
                                         width: 100px;
                                     }
@@ -1381,6 +1401,7 @@
             width: 0%;
             transition: 300ms;
         }
+
         .card-group {
             overflow: hidden;
             transition: 500ms;
@@ -1409,12 +1430,12 @@
                     border-radius: 20px;
                     padding: 15px 15px 15px 15px;
                     box-sizing: border-box;
-    
+
                     .card-head {
                         display: flex;
                         justify-content: space-between;
                         margin-bottom: 30px;
-    
+
                         .circle {
                             border-radius: 30px;
                             height: 30px;
@@ -1425,7 +1446,7 @@
                             align-items: center;
                             color: $colorOrange;
                         }
-    
+
                         .icon {
                             color: $colorOrange;
                             font-size: 20px;
@@ -1438,24 +1459,24 @@
                             cursor: pointer;
 
                             svg {
-                                color: $colorOrange; 
+                                color: $colorOrange;
                                 position: absolute;
                                 left: 0;
                                 transition: 300ms;
                             }
                         }
                     }
-    
+
                     .card-body {
                         display: flex;
                         justify-content: space-between;
-    
+
                         h4 {
                             line-height: 24px;
                             font-weight: 500;
                             margin-bottom: 10px;
                         }
-    
+
                         h5 {
                             color: $colorDark;
                             font-size: 14px;
@@ -1473,9 +1494,9 @@
 
                 .card:hover {
                     .card-head {
-                            
+
                         .icon {
-                            
+
                             svg {
                                 left: 15px;
                                 transition: 300ms;
@@ -1500,7 +1521,7 @@
             justify-content: center;
 
             .content {
-            height: 100%;
+                height: 100%;
                 width: 100%;
                 height: auto;
                 position: relative;
@@ -1547,7 +1568,7 @@
                             display: flex;
                             flex-wrap: wrap;
                             justify-content: space-between;
-                            
+
                             .col-6 {
                                 width: 100%;
                                 margin-bottom: 20px;
@@ -1649,9 +1670,9 @@
     }
 
 
-#desktop {
-    display: none;
-}
+    #desktop {
+        display: none;
+    }
 
 
 }

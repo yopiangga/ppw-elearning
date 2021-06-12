@@ -62,7 +62,7 @@ export function MyAssignment() {
         axios.post(`${url.api}myAssignment/read-assignment.php`, { idUser: userLogin.id }).then(
             (res) => {
                 setAss(res.data.data);
-                // console.log(res);
+                console.log(res);
                 setCollect(res.data.collect);
             }
         ).catch((err) => {

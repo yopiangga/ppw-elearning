@@ -50,11 +50,31 @@
         outline: none;
     }
 
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: transparent;
+    }
+
     .bg-loading {
         width: 100%;
         min-height: 100vh;
         background-color: rgba($color: #000000, $alpha: 0.75);
-        display: none;  
+        display: none;
         justify-content: center;
         align-items: center;
         position: fixed;
@@ -782,7 +802,7 @@
 
         }
 
-        .modal-form.active{
+        .modal-form.active {
             display: flex;
         }
 
@@ -1375,7 +1395,7 @@
                         padding-top: 40px;
                         padding-bottom: 40px;
                         overflow: auto;
-            
+
                         .table {
                             display: flex;
                             flex-direction: column;
@@ -1415,7 +1435,7 @@
                                         margin-right: 5px;
                                         display: flex;
                                     }
-    
+
                                     .td.small {
                                         width: 100px;
                                     }
