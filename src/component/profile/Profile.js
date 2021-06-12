@@ -35,12 +35,16 @@ export function Profile() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+
         axios.post(`${url.api}profile/update-profile.php`, {idUser: userLogin.id , status: userLogin.status, user: user}).then(
             (res) => {
-                console.log(res);
+                // console.log(res);
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 

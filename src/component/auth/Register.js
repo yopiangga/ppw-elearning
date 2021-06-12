@@ -22,9 +22,10 @@ export function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(createUser);
+        document.querySelector('.bg-loading').classList.add('active');
         axios.post(`${url.api}auth/register.php`, createUser).then(
             (res) => {
+                document.querySelector('.bg-loading').classList.remove('active');
                 (res.data.msg == "Sign Up Success!") ?
                     loginSuccess()
                     :
@@ -32,6 +33,7 @@ export function Register() {
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 

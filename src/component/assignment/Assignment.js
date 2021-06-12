@@ -110,23 +110,30 @@ export function Assignment() {
 
     const handleChangeSubmit = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+
         axios.post(`${url.api}assignment/edit-rate-assignment.php`, rate).then(
             (res) => {
                 handleReqCollect(idCollect);
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
         document.querySelector('.modal').classList.remove('active');
     }
 
     const handleDeleteCollect = (id) => {
+        document.querySelector('.bg-loading').classList.add('active');
         axios.post(`${url.api}assignment/delete-collect-assignment.php`, {id: id}).then(
             (res) => {
                 handleReqCollect(idCollect);
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 
@@ -162,8 +169,8 @@ export function Assignment() {
                         </div>
 
                         <div className="btn">
-                            <button className="btn-cancel" name="cancel" type="button" onClick={handleCancelRate}>BATAL</button>
-                            <button className="btn-submit" name="submit" type="submit">KIRIM</button>
+                            <button className="btn-cancel" name="cancel" type="button" onClick={handleCancelRate}>CANCEL</button>
+                            <button className="btn-submit" name="submit" type="submit">RATE</button>
                         </div>
 
                     </form>

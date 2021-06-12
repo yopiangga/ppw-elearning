@@ -46,15 +46,19 @@ export function MyClass() {
 
     const handleEnroll = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+        
         axios.post(`${url.api}myClass/enroll.php`, { codeClass: enroll.codeClass, idUser: userLogin.id }).then(
             (res) => {
-                console.log(res);
+                // console.log(res);
+                reqClass();
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
         
-        reqClass();
     }
 
     const handleClick = (id, idx) => {
@@ -75,18 +79,22 @@ export function MyClass() {
 
     const handleDelete = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+        
         axios.post(`${url.api}myClass/exit-class.php`, {idClass: classExit.id, idUser: userLogin.id}).then(
             (res) => {
-                console.log(res);
+                // console.log(res);
+                setClassExit({
+                    id: 0,
+                    idx: 0
+                });
+                reqClass();
+                document.querySelector('.bg-loading').classList.remove('active');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
-        setClassExit({
-            id: 0,
-            idx: 0
-        });
-        reqClass();
         document.querySelector('.modal').classList.remove('active');
     }
 

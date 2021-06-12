@@ -32,13 +32,17 @@ export function EditAssignment() {
     const handleAssignmentEdit = (event) => {
         event.preventDefault();
         // console.log(assignmentDetail)
+        document.querySelector('.bg-loading').classList.add('active');
+
         axios.post(`${url.api}assignment/edit-assignment.php`, assignmentDetail).then(
             (res) => {
-                console.log(res);
+                // console.log(res);
+                document.querySelector('.bg-loading').classList.remove('active');
                 history.push('/assignment');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 

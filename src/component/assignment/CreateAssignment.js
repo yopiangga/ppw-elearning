@@ -29,13 +29,17 @@ export function CreateAssignment() {
 
     const handleCreateAssignment = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+
         axios.post(`${url.api}assignment/create-assignment.php`, createAssignment).then(
             (res) => {
-                console.log(res);
+                // console.log(res);
+                document.querySelector('.bg-loading').classList.remove('active');
                 history.push('/assignment');
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 

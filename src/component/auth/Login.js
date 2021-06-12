@@ -22,8 +22,11 @@ export function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        document.querySelector('.bg-loading').classList.add('active');
+
         axios.post(`${url.api}auth/login.php`, user).then(
             (res) => {
+                document.querySelector('.bg-loading').classList.remove('active');
                 (res.data.msg == "Login Success!") ? 
                 successLogin(res.data.data[0])
                  :
@@ -31,6 +34,7 @@ export function Login() {
             }
         ).catch((err) => {
             console.log(err);
+            document.querySelector('.bg-loading').classList.remove('active');
         })
     }
 
